@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>제 선택은 형이죠</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700&family=Gowun+Batang:wght@400;700&display=swap">
+<style>
+:root{--night:#1b1922;--dusk:#2c2936;--line:#5a5668;--moon:#efedf4;--mist:#aaa6b8;--lamp:#dcc4c8;--frost:#b7bdd8;--temp:var(--mist);
+ --serif:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;--pix:"Gothic A1","Apple SD Gothic Neo","Noto Sans KR",sans-serif;color-scheme:dark}
+html,body{height:100%}
+*{box-sizing:border-box;margin:0}
+body{background:#100e15;color:var(--moon);font-family:var(--serif);overflow:hidden}
+#app{position:relative;height:100%;max-width:480px;margin:auto;overflow:hidden;background:var(--night)}
+#bg{position:absolute;inset:0;overflow:hidden}
+#bgi,#cg{position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity .6s}
+#bg::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(#1b1922cc 0,#1b192200 18%,#1b192200 44%,#1b1922d9 72%,#1b1922 100%),radial-gradient(120% 80% at 50% 40%,#0000 55%,#0c0b10aa 100%)}
+#cg{display:none}#cg.on{display:block}
+#ph{position:absolute;left:0;right:0;top:64px;bottom:calc(env(safe-area-inset-bottom,0px) + 252px);display:none;align-items:center;justify-content:center;z-index:1}
+#ph.on{display:flex}
+#phi{position:relative;height:100%;aspect-ratio:9/16;max-width:78%;border-radius:28px;background:linear-gradient(#3b3846,#1f1c27 60%,#15131b);container-type:inline-size;color:#f2f0f6;font-family:var(--pix);box-shadow:0 0 0 6px #0e0d12,0 0 0 7px #3b3846,0 24px 50px #000a;overflow:hidden}
+#phc{position:absolute;left:8%;top:3.5%;font-size:4.2cqw;font-weight:500}
+#phn{position:absolute;left:0;right:0;top:19%;text-align:center;font-size:10cqw;font-weight:500;letter-spacing:.02em}
+#phs{position:absolute;left:0;right:0;top:33%;text-align:center;font-size:4.6cqw;color:#bdb9c8}
+#phd{position:absolute;left:0;right:0;top:39%;display:flex;justify-content:center;gap:3cqw}
+#phd i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:#ebe8f0;animation:pd 1.2s steps(1) infinite}
+#phd i:nth-child(2){animation-delay:.4s}#phd i:nth-child(3){animation-delay:.8s}
+@keyframes pd{0%{opacity:1}33%{opacity:.25}66%{opacity:.25}}
+#phd.hide{display:none}
+#pht{position:absolute;left:0;right:0;top:38.5%;text-align:center;font-size:3.8cqw;color:#a9a5b6;display:none}
+#pbt{position:absolute;left:8%;right:8%;top:54%;display:flex;justify-content:space-between;transition:opacity .3s}
+#pbt span{display:flex;flex-direction:column;align-items:center;gap:2.4cqw;font-size:3.4cqw;color:#d0cdd9}
+#pbt i{display:grid;place-items:center;width:17cqw;height:17cqw;border-radius:50%;background:#ffffff1c;font-style:normal;font-size:6cqw;filter:grayscale(1)}
+#phe{position:absolute;left:50%;top:76%;width:18cqw;height:18cqw;margin-left:-9cqw;border-radius:50%;background:#b9554f;display:grid;place-items:center;transition:opacity .3s}
+#phe i{width:8cqw;height:3cqw;border-radius:3cqw 3cqw 1cqw 1cqw;background:#fff}
+#phx,#phy,#pmt{display:none!important}
+#ph.off #pht{display:block}
+#ph.off #pbt,#ph.off #phe{opacity:.3}
+#chat{position:absolute;left:18px;right:18px;top:calc(env(safe-area-inset-top,0px) + 58px);bottom:calc(env(safe-area-inset-bottom,0px) + 250px);display:none;flex-direction:column;background:#17151df2;box-shadow:inset 0 0 0 1px #5a5668,0 18px 40px #0008;z-index:1;border-radius:8px;}
+#chat.on{display:flex}
+#chat header{padding:12px 16px;border-bottom:1px solid #5a566888;font-family:var(--pix);font-size:14px;color:var(--moon);text-align:center}
+#cl{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px;scrollbar-width:none;font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+#cl::-webkit-scrollbar{display:none}
+#cl p{max-width:76%;padding:8px 12px;font-size:15px;line-height:1.45;word-break:keep-all;border-radius:14px}
+#cl .H{position:relative;align-self:flex-end;background:var(--lamp);color:#2a1d10;border-bottom-right-radius:4px}
+#cl .Y{align-self:flex-start;background:#36324a;color:var(--moon);border-bottom-left-radius:4px}
+#cl .H+.Y,#cl .Y+.H{margin-top:8px}
+#cl .H.u::before{content:"1";position:absolute;right:calc(100% + 6px);bottom:2px;font-family:var(--pix);font-size:12px;line-height:1;color:#ffd84d}
+#cl p.new{animation:pop .28s cubic-bezier(.2,.8,.3,1.2) both}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+#box.tin,#box.tin small{visibility:hidden!important}
+#tap{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);text-align:center;font-family:var(--pix);font-size:12px;color:var(--mist);display:none;z-index:3;pointer-events:none;animation:bl 1.6s steps(2) infinite}
+#tap.on{display:block}
+#fd{position:absolute;inset:0;background:var(--night);opacity:0;pointer-events:none;z-index:9;transition:opacity .3s}
+.dorm{background:linear-gradient(#28252f,#1b1922)}.day{background:linear-gradient(#625e72,#2c2936)}.alone,.night,.morn,.prac,.ter{background:linear-gradient(#221f2b,#14121a)}
+.scr{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 16px calc(env(safe-area-inset-bottom,0px) + 16px);z-index:2}
+.hide{display:none!important}
+/* title */
+#menu{z-index:6;justify-content:space-between;align-items:center;text-align:center;padding:calc(env(safe-area-inset-top,0px) + 13vh) 28px calc(env(safe-area-inset-bottom,0px) + 26px);background:#100e15}
+#menu::before{content:"";position:absolute;inset:0;background:url(p_win.jpg) 62% 28%/cover;opacity:.9;animation:drift 18s ease-in-out infinite alternate}
+#menu::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 45% at 50% 30%,#2a2540cc,#0000 70%),linear-gradient(#100e1566,#100e1500 30%,#100e15b3 68%,#100e15f2)}
+@keyframes drift{to{transform:scale(1.06) translateY(-1.5%)}}
+#menu>*{position:relative;z-index:1}
+.cv{display:flex;flex-direction:column;align-items:center}
+.cv-t{font-family:var(--pix);font-size:12px;letter-spacing:.3em;color:#c9c3dc;margin-bottom:22px;animation:fin 1.2s .1s both}
+#menu h1{font-weight:400;font-size:clamp(30px,8.6vw,40px);letter-spacing:.1em;padding-left:.1em;white-space:nowrap;line-height:1.2;color:var(--moon);text-shadow:0 0 24px #b9a8ee55,0 2px 10px #0008;animation:fin 1.6s .3s both}
+.cv-s{margin-top:14px;font-size:15px;color:#d6d1e6;animation:fin 1.6s .6s both}
+.cv-call{display:flex;align-items:center;gap:8px;margin-top:30px;padding:8px 16px;border-radius:99px;background:#ffffff12;box-shadow:inset 0 0 0 1px #ffffff1f;font-family:var(--pix);font-size:13px;color:#d6d1e6;animation:fin 1.4s 1s both}
+.cv-call i{width:7px;height:7px;border-radius:50%;background:#b6e3c6;box-shadow:0 0 8px #b6e3c6;animation:pulse 2s ease-in-out infinite}
+.cv-call b{font-weight:500;color:var(--moon);font-variant-numeric:tabular-nums}
+@keyframes pulse{50%{opacity:.35}}
+@keyframes fin{from{opacity:0;filter:blur(6px);transform:translateY(6px)}to{opacity:1;filter:none;transform:none}}
+.mw{width:100%;max-width:300px;display:flex;flex-direction:column;border-radius:18px;background:#ffffff0f;box-shadow:inset 0 0 0 1px #ffffff1a;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);overflow:hidden;animation:fin 1.2s 1.2s both}
+.cv-n{margin-top:16px;font-family:var(--pix);font-size:12px;letter-spacing:.12em;color:#9f9ab2}
+.mb{display:block;width:100%;font-family:var(--pix);font-weight:500;font-size:16px;color:var(--moon);background:none;border:0;padding:16px 10px;cursor:pointer;transition:background .2s}
+.mw .mb+.mb{border-top:1px solid #ffffff17}
+.mb:hover,.mb:focus-visible{background:#ffffff14;outline:0}
+#ov .mb{max-width:280px;border-radius:14px;background:#ffffff0f;box-shadow:inset 0 0 0 1px #ffffff1a;margin:5px auto}
+button:focus-visible{outline:2px solid var(--lamp);outline-offset:2px}
+/* game chrome */
+#bar{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);left:14px;right:14px;display:flex;gap:2px;z-index:5;align-items:center}
+#bar button{font-family:var(--pix);font-size:12px;color:var(--mist);background:#1b192299;border:0;padding:6px 7px;cursor:pointer;border-bottom:2px solid transparent}
+#bar button:hover{color:var(--moon)}
+#bar button.on{color:var(--lamp);border-bottom-color:var(--lamp)}
+#bk{margin-right:auto}
+#chap{position:absolute;left:0;right:0;top:38%;z-index:7;text-align:center;pointer-events:none;opacity:0;transition:opacity .7s}
+#chap.show{opacity:1}
+#chap i{display:block;font-style:normal;font-family:var(--pix);font-size:13px;color:var(--lamp);letter-spacing:.2em;margin-bottom:10px}
+#chap span{font-size:24px;font-weight:700;color:var(--moon);text-shadow:0 2px 12px #0c0b10}
+#chap::after{content:"";display:block;width:48px;height:2px;margin:14px auto 0;background:linear-gradient(90deg,var(--frost),var(--lamp))}
+#nm{align-self:flex-start;display:flex;align-items:center;gap:8px;margin:0 0 8px 4px;font-family:var(--pix);font-size:14px;color:var(--temp);text-shadow:0 1px 0 #0c0b10}
+#nm::before{content:"";width:7px;height:7px;background:var(--temp);box-shadow:0 0 8px var(--temp)}
+#nm.nM{opacity:.85}
+#box{--temp:var(--mist);position:relative;min-height:156px;max-height:200px;overflow-y:auto;padding:18px 20px 30px;font-size:17px;line-height:1.85;word-break:keep-all;cursor:pointer;color:var(--moon);background:linear-gradient(#221f2bf2,#1b1922f7);
+ border-radius:8px;
+ box-shadow:inset 0 0 0 1px #5a566899;scrollbar-width:none;transition:color .3s}
+#box::-webkit-scrollbar{display:none}
+#box::before{content:"";position:absolute;left:4px;right:4px;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--temp) 30%,var(--temp) 70%,transparent);opacity:.9;transition:background .4s}
+.sH,#nm.nH{--temp:var(--lamp)}.sY,#nm.nY{--temp:var(--frost)}.sM,#nm.nM{--temp:#d3bcc4}.sN{--temp:#7d7891}
+#box.nar{color:#dcd9e3}
+#box.mono{color:#efe2e8}
+#box small{position:absolute;right:16px;bottom:12px;width:8px;height:8px;background:var(--temp);visibility:hidden;animation:bl 1s steps(2) infinite}
+#box.done small{visibility:visible}
+@keyframes bl{50%{opacity:0}}
+#ch{display:flex;flex-direction:column;gap:8px;margin-bottom:6px;position:relative;z-index:6}
+#ch button{font-family:var(--serif);font-size:16px;line-height:1.55;color:var(--moon);background:#1b1922f0;border:0;box-shadow:inset 0 0 0 1px #5a5668aa;border-left:3px solid var(--line);padding:14px 16px;text-align:left;cursor:pointer;word-break:keep-all;transition:border-color .2s,background .2s}
+#ch button:hover,#ch button:focus-visible{border-left-color:var(--lamp);background:#2c2936f2;outline:0}
+#ov{background:#14121af5;justify-content:flex-start;overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 40px) 26px 40px;z-index:8}
+#ov h2{font-size:24px;margin-bottom:14px;color:var(--moon)}#ov p{line-height:1.9;margin-bottom:22px;word-break:keep-all;color:#dcd9e3}
+#ov>small{font-family:var(--pix);font-size:13px;letter-spacing:.2em;color:var(--lamp);margin-bottom:10px}
+#ov h2+p::before{content:"";display:block;width:48px;height:2px;margin:0 auto 18px;background:linear-gradient(90deg,var(--frost),var(--lamp))}
+.lg{padding:10px 0;border-bottom:1px solid #5a566855;font-size:15px;line-height:1.7}.lg b{font-family:var(--pix);font-weight:400;font-size:12px;color:var(--lamp);display:block}
+.gl{border-left:2px solid var(--line);padding:10px 14px;margin-bottom:12px;line-height:1.7}.gl small{font-family:var(--pix);color:var(--lamp)}
+#ov input{font-family:var(--serif);font-size:20px;text-align:center;width:min(260px,80%);margin:6px auto 18px;display:block;padding:12px;background:#ffffff0f;color:var(--moon);border:0;border-radius:12px;box-shadow:inset 0 0 0 1px #ffffff26}
+#ov input:focus{outline:2px solid var(--lamp);outline-offset:2px}
+#nm.nG,.sG{--temp:#c6b8e2}
+#toast{position:absolute;top:64px;left:50%;transform:translateX(-50%);background:#1b1922f2;box-shadow:inset 0 0 0 1px var(--line);padding:8px 16px;z-index:50;font-family:var(--pix);font-size:13px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head><body><div id="app">
+<div id="bg" class="dorm"><i id="bgi"></i><i id="cg"></i><div id="ph"><div id="phi"><span id="phc">AM 01:08</span><b id="phn">유진</b><span id="phs">전화 거는 중…</span><span id="phd"><i></i><i></i><i></i></span><span id="pht"></span><div id="pbt"><span><i>🔈</i>스피커</span><span><i>⌗</i>키패드</span><span><i>🎙</i>음소거</span></div><span id="phe"><i></i></span><span id="phx"></span><span id="phy"></span><span id="pmt">AM 01:13</span></div></div><div id="chat"><header><b>유진</b></header><div id="cl"></div></div></div><div id="fd"></div>
+<div id="menu" class="scr"><div class="cv"><span class="cv-t">AM 01:08</span><h1>제 선택은 형이죠</h1><p class="cv-s">가장 가까운 사람이 멀게 느껴질 때</p><div class="cv-call"><i></i><span>통화 중</span><b id="cvc">00:00</b></div></div><div class="mw"><button class="mb" id="bn">처음부터</button><button class="mb" id="bc">이어서 하기</button><button class="mb" id="bg2">엔딩 갤러리</button></div><p class="cv-n">한유진, 장하오</p></div>
+<div id="game" class="scr hide"><div id="bar"><button id="bk">◀ 뒤로</button><button id="b1">로그</button><button id="b2">저장</button><button id="b3">자동</button><button id="b4">스킵</button><button id="b5" class="on">BGM</button><button id="b6" class="on">효과음</button><button id="b7">메뉴</button></div>
+<div id="ch" class="hide"></div><div id="nm"></div><div id="box"></div><div id="tap">화면을 눌러 계속</div></div>
+<div id="ov" class="scr hide"></div>
+</div>
+<script>
+const n=t=>['N',t],m=t=>['M',t],h=t=>['H',t],y=t=>['Y',t],g=t=>['G',t];
+const vo=(l,f)=>(l[2]=0,l[3]=f,l);
+const tH=t=>['TH',t],tY=t=>['TY',t];
+const NM={M:'하오 (속마음)',H:'하오',Y:'한유진',G:'김민준',TH:'하오 (메시지)',TY:'한유진 (메시지)'};
+const S={
+a:{b:'dorm',t:'1. 숙소의 밤',l:[n('새벽 한 시가 가까운 숙소 거실. 연습을 마친 우리는 소파에 늘어져 있다. 나는 유진이 손에 든 과자 봉지만 노려본다.'),h('유진아, 한 입만. 아~'),n('입을 벌린 채 눈만 동그랗게 뜨고 올려다본다. 과자를 집던 유진의 손이 멈춘다.'),y('형, 그렇게 귀엽게 쳐다봐도 안 돼요.'),n('유진이 작게 한숨을 쉰다. 먹고 있던 과자를 다정하게 집어 내 입에 넣어 준다. 손끝이 입술 가장자리를 스치고 지나간다.'),y('…말티즈처럼 먹네.'),n('작게 중얼거리고는 유진이 입꼬리를 슬쩍 올린다. 놀리는 말인데 목소리가 이상하게 다정하다.'),h('말티즈? 나 지금 강아지 취급당한 거야?'),y('그래도 깨무는 건 안 돼요.'),n('말끝에 유진이 장난스럽게 웃는다. 그 얼굴을 보고 있자니 나도 모르게 따라 웃게 된다.'),m('이런 사소한 게 좋아서 매일 모른 척 장난을 친다. 좋아한다는 말은 장난에도 못 섞으면서.')],
+c:[['유진의 어깨에 기댄다',{y:1},[y('…무거워요, 형.'),n('그러면서도 내가 편하도록 어깨를 살짝 낮춰 준다. 귀끝이 조금 빨갛다.')]],['“하나 더~” 다시 아~ 하고 입을 벌린다',{y:1},[y('…하나만이에요. 진짜로.'),n('그러면서 또 하나를 집어 내 입에 넣어 준다. 입을 다문 채 우물거리는 나를 보고 유진이 작게 웃는다.'),h('유진이가 주니까 더 맛있다~'),n('유진은 대꾸 없이 새 봉지를 뜯어 내 앞에 놓는다. 투덜대는 말과 행동이 반대다.')]],['“고생했어, 우리 유진이” 머리를 쓰다듬는다',{y:1,o:1},[y('…갑자기 왜 그래요.'),n('피하지는 않는다. 손바닥 밑에서 유진이가 눈을 한 번 감았다 뜬다.'),m('좋아한다는 말 대신 오늘도 이것만 했다.')]]],n:'b'},
+b:{b:'dorm',t:'1. 숙소의 밤',l:[n('다음 날 저녁. 식탁에서 라면 물을 올려 놓고 기다리는데, 맞은편 유진의 핸드폰이 짧게 울린다.'),n('화면을 본 유진이 피식 웃는다. 잘 웃지 않는 사람이 소리까지 내서.'),y('아, 민준 형이에요. 어제 같이 본 영화 결말 갖고 또 한마디 하네요.'),m('민준. 배우 김민준. 언제부터 이 이름이 이렇게 자연스럽게 나오기 시작했더라.')],
+c:[['“둘이 많이 친해졌나 보네.”',{y:1,o:1},[n('장하오가 작게 웅얼거렸다. 말끝이 입 안에서 흐려졌다.'),y('네? 방금 뭐라고 하셨어요?'),h('아냐, 혼잣말~'),y('민준 형이요? 그냥 연락 자주 하는 형이에요. 시간 되면 같이 봐요.'),m('같이 보자는 말이 반가워야 하는데, 이상하게 한 박자 늦게 웃게 된다.')]],['“좋겠네, 친한 형 생겨서~” 웃어넘긴다',{h:1},[y('형이라기엔… 그냥 편해요. 형이랑 나이도 비슷해서 그런가.'),m('나랑 나이가 비슷한 형. 유진이한테 연상의 친한 사람이 생긴 건데, 나랑 비슷해서 편하다는 말이 신경 쓰인다.'),m('이미 유진이 옆에는 내가 있는데, 굳이 다른 사람이 필요할까 싶었다.')]],['말없이 라면 불을 줄인다',{h:1},[n('유진은 핸드폰을 보며 답장을 친다. 엄지가 빠르다. 나는 끓지도 않는 라면 물만 본다.'),m('물이 끓는 소리가 유진의 웃음소리보다 작게 들린다.')]]],n:'c'},
+c:{b:'prac',t:'2. 연습실',l:[n('일주일 뒤 오후, 연습실. 휴식 시간에 문이 열리고 커피 트레이를 든 키 큰 남자가 들어온다. 배우 김민준이다.'),g('안녕하세요! 근처에서 촬영하다가 인사만 드리려고 왔어요. 하오 선배님 맞으시죠?'),h('아, 안녕하세요. 커피 감사해요.'),n('민준은 예의 바르고 사람 좋아 보인다. 그래서 더 곤란하다. 싫어할 구석이 없다.'),n('곧 유진이 바닥에서 일어나 민준 쪽으로 걸어간다. 서로 어깨를 툭 치고, 내가 모르는 농담에 동시에 웃는다.'),m('나한테는 존댓말을 쓰던 유진이가 민준한테는 말을 반쯤 놓는다. 그게 왜 이렇게 눈에 들어올까.')],
+c:[['둘 사이에 자연스럽게 끼어든다',{y:1,o:1},[h('무슨 얘기야~ 나도 껴 줘.'),g('아, 유진이가 선배님이 요리 잘한다고 자랑했어요.'),y('…그 얘기까지 하지 마요.'),m('자랑했다고? 나를? 서운함이 반쯤 녹는다.')]],['멀찍이서 물을 마시며 지켜본다',{h:1},[n('물병을 입에 대고 있지만 삼키지는 않는다. 거울 속에서 둘이 나란히 서 있다.'),m('둘의 모습이 잘 어울린다. 그게 문제다.')]],['스태프에게 가서 일부러 바쁜 척한다',{h:2},[h('저기, 다음 안무 동선 확인해도 될까요?'),n('필요 없는 확인이다. 등 뒤에서 유진의 웃음소리가 들린다. 돌아보지 않는다.')]]],n:'d'},
+d:{b:'prac',t:'2. 연습실',l:[n('휴식이 끝나 갈 무렵. 벽 쪽에 유진이 앉아 있다.'),n('내가 다가가는 사이 민준이 먼저 유진 옆에 털썩 앉는다. 아무 뜻 없이, 그냥 거기가 비어 있어서.'),g('잠깐 앉아 있다 가도 되지?'),y('네, 그럼요.'),n('가만히 서 있는 나를 보고 유진이 고개를 든다.'),y('어, 형도 앉을래요?'),n('유진이 움직여 자리를 만든다. 나는 그 자리 앞에 서 있다.')],
+c:[['“그럴까?”',{y:1},[n('유진이 내 손을 잡아끌어 옆에 앉힌다.'),y('형 오늘 손 차가워요.'),m('그 한마디에 겨우 숨이 돌아온다.')]],['“난 괜찮아, 서 있을게~”',{h:1},[y('왜요? 음… 알겠어요.'),n('유진이 눈을 맞추지 않고 말한다.'),m('그 말투가 평소와 같은지 아닌지 모르겠다. 확인할 용기도 없다.')]],['혼자 맞은편 벽에 앉는다',{h:2},[n('시선 너머로 두 사람이 보인다. 둘 사이엔 틈이 없다.'),m('내가 자리를 비워 둔 건데, 왜 내가 밀려난 기분일까. 서운함이 조금씩 번져간다.')]]],n:'e'},
+e:{b:'dorm',t:'3. 약속',l:[n('그날 저녁 숙소. 유진이 현관 앞에서 운동화 끈을 만지고 있다.'),y('형, 저 아는 형이랑 약속 있어서 나가 볼게요. 늦으니까 저녁은 먼저 먹어요.'),m('오늘 저녁 유진이랑 라면 끓여 먹기로 했다. 나 혼자만의 약속이었던 걸까.')],
+c:[['“알겠어… 조심히 다녀와.”',{h:2},[y('정말 괜찮아요?'),h('괜찮지~ 형은 라면 혼자 먹으면 되지!'),n('유진이 내 얼굴을 한 번 더 보다가 고개를 끄덕인다.'),m('들켰나. 아니, 안 들켰겠지.')]],['“오늘 나랑 라면 먹기로 했잖아…” 서운한 티를 조금 낸다',{o:1,p:1},[y('아… 맞다. 죄송해요.'),n('유진이 잠깐 입을 닫았다가 말한다.'),y('일찍 올게요. 형이 먹고 싶다는 거 사 올게요.'),m('투정 부렸다 싶어 얼굴이 뜨겁다. 그런데 일찍 오겠다는 말이 이상하게 오래 남는다.')]],['“저녁은 나랑 먹으면 안 돼?”',{h:1},[y('아… 오늘은 먼저 잡은 약속이라서요. 다음에 같이 먹어요.'),n('유진이 대수롭지 않게 대답한다. 그 대수롭지 않음이 더 아프다.')]]],n:'f'},
+f:{b:'alone',t:'3. 약속',l:[n('유진이 나간 저녁. 숙소가 이렇게 넓었나. 유진이 없으니 TV 소리만 크다.'),n('혼자 끓인 라면은 맛이 없다. 결국 두 젓가락 먹고 내려놓았다.'),['CG','win'],m('지금쯤 뭐 하고 있을까.'),n('몇 시간이 흘러 시계는 어느새 새벽 한 시를 넘겼다. 유진은 아직 돌아오지 않았다.'),n('통화 목록을 연다. 맨 위에 유진의 이름이 있다. 통화 버튼 위에 엄지를 올렸다가 내린다. 다시 올린다.')],
+c:[['“유진아, 언제 들어와?” 전화를 건다',{y:1,o:1},[['CG','call'],n('통화 버튼을 누른다. 연결음이 길게 이어진다.'),['CG','callon'],n('연결음이 세 번 울리고 유진이 받는다.'),h('유진아, 언제 들어와?'),y('어… 아직요. 형 아직 안 잤어요?'),h('네가 아직 안 와서…'),y('얘기가 아직 안 끝나서, 형 먼저 자요. 나중에 연락할게요.'),n('말투는 평소와 같은데 속도가 빠르다. 대답 사이사이 뒤쪽 소리에 귀를 기울이는 것 같다. 내가 무슨 말을 더 하기도 전에 통화가 끊긴다.'),['CG','calloff'],m('얼른 끊고 싶어 하는 것 같았는데, 내 착각일까. 괜히 전화를 걸어 방해한 것만 같아 기분이 저조해진다.'),['CG','chat'],n('몇 분 뒤 메시지가 온다.'),tY('금방 들어갈게요'),n('그 한 줄을 세 번 읽는다.'),['CG','win'],m('연락이 됐으니 그걸로 됐다고 말하고 싶은데, 마음이 잘 따라 주지 않는다.')]],['통화 버튼에서 손을 뗀다',{h:2},[n('핸드폰을 엎어 놓는다.'),m('방해하는 사람이 되기 싫다. 나이도 더 많은 주제에.'),m('어른스러운 척, 사실은 겁쟁이.')]],['멤버 단톡방에서 아무 이야기나 한다',{h:1},[n('단톡방에 의미 없는 사진을 올린다. 멤버들이 웃음 이모티콘을 달아 준다.'),m('유진의 이름만 대화창 맨 아래에 조용히 남아 있다.')]]],n:'g'},
+g:{b:'day',t:'4. 조용해진 사람',l:[n('며칠 뒤 아침, 식탁. 유진이 핸드폰을 보다가 또 웃는다. 나는 숟가락을 든 채 그 얼굴을 본다.'),n('평소라면 “뭐 봐? 나도 보여줘~” 하며 어깨를 부딪혔을 거다. 하지만 오늘은 목소리가 나오지 않는다.'),h('…밥 먹자.'),y('네? 아, 네. 형 어제 늦게 잤어요? 피곤해 보이는데.'),m('평소처럼 웃으며 말을 건네는 일이 이렇게 어려운 일이었나.')],
+c:[['“왜 얼굴 많이 부었어~?” 라며 억지로 장난을 건다',{h:1},[y('…안 부었어요. 살 빠진 것 같은데.'),n('유진이 웃지 않는다. 웃음을 기대했던 내 입꼬리만 어색하게 남는다.')]],['“아직 잠이 덜 깼나 보지.” 방으로 간다',{h:2,y:-1},[n('방문을 닫고 등을 기댄다. 식탁에서 유진이 의자를 미는 소리가 들린다. 따라오는 발소리는 없다.'),m('따라와 주길 바란 내가 제일 이상하다.')]],['“유진아, 오늘 저녁에 시간 돼?” 용기를 낸다',{o:1,y:1},[y('오늘이요? …네, 돼요.'),h('그럼 같이 밥 먹자. 형이 쏠게.'),n('유진이 핸드폰을 내려놓고 나를 똑바로 본다. 그제야 내가 이 시선을 얼마나 기다렸는지 안다.')]]],n:'x1'},
+x1:{b:'day',t:'3. 먼저 보내는 메시지',l:[n('며칠이 지난다. 각자 스케줄이 많아 숙소에서 얼굴 볼 일이 줄었다.'),n('메시지 창을 연다. 위로 올려 봐도 대화의 시작은 늘 내 말풍선이다.'),['CG','chat'],tH('유진아 밥은 먹었어?'),tH('오늘 촬영장 춥던데 따뜻하게 입어'),['RD'],n('숫자 1이 사라지고, 답장은 금방 온다.'),tY('네 먹었어요'),tY('형도 꼭 챙겨 먹어요'),n('다정한 답장. 거기서 끝이다. 물음표도, 다음 말도 없다.'),m('대화를 이어 가는 건 이번에도 내 몫이다.')],
+c:[['“오늘 끝나고 뭐 해?” 한 번 더 보낸다',{},[tH('오늘 끝나고 뭐 해?'),['RD'],n('1은 금방 사라진다. 답은 한참 뒤에 온다.'),tY('숙소 가서 쉬려고요'),tY('형도 푹 쉬어요'),m('쉬라는 말이 꼭 오지 말라는 말처럼 읽힌다. 내가 이상한 거다.')]],['강아지 이모티콘 하나만 보낸다',{},[tH('🐶'),['RD'],n('1이 사라진다. 그걸로 끝이다.'),m('이모티콘에 답장을 바라는 것도 웃기지. 알면서도 화면을 몇 번 더 켜 본다.')]],['쓰던 메시지를 지운다',{},[n('‘요즘 나한테 서운한 거 있어?’ 썼다가 한 글자씩 지운다.'),m('일곱 살이나 많은 형이 할 말은 아니다.')]]],n:'x2'},
+x2:{b:'alone',t:'4. 읽고 답 없는 밤',l:[n('밤 열두 시가 넘었다. 불 꺼진 방, 침대 끝에 앉아 있다.'),['CG','win'],m('내가 예민하게 구는 걸 수도 있어. 유진이는 바쁘고, 스무 살이고, 원래 말이 많은 애도 아니야.'),m('…그런데 좋아하는 사람한테 나만 계속 다가가는 건, 생각보다 외롭다.'),n('결국 메시지 창을 연다.'),['CG','chat'],tH('자?'),n('1이 그대로 떠 있다. 1분, 2분.'),['RD'],n('…1이 사라진다.'),tY('아뇨 아직요'),tY('왜요?'),tH('그냥'),tH('오늘 연습 끝나고 바로 갔더라'),tY('피곤해서요'),tH('요즘 계속 피곤하네 ㅋㅋ'),n('‘ㅋㅋ’를 붙였다가 지우고, 다시 붙여서 보냈다.'),tY('형'),tY('하고 싶은 말 있으면 해요'),m('들켰다. 아니, 들키고 싶었던 걸지도 모른다.'),tH('요즘 너 연락도 먼저 안 하잖아'),tY('바빠서 그래요'),tY('형도 알잖아요'),tH('알지'),tH('근데 매번 내가 먼저 하는 거 너는 몰라?'),['RD'],n('1이 사라진다. 입력 중 표시가 떴다가 사라지고, 다시 뜬다.'),tY('저 형 피한 거 아니에요'),tH('근데 왜 나는 계속 그렇게 느껴지는데'),tH('내가 이상한 거야?'),tY('그런 말 한 적 없잖아요'),n('마침표 하나 없는 짧은 답장.'),n('그 한 줄을 보는 순간, 가슴 밑에서 뭔가 확 치민다.'),m('없잖아요? 지금 그 말이 나한테 할 소리야?'),n('손이 떨린다. 생각보다 손가락이 먼저 움직인다.')],
+c:[['참지 않고 통화 버튼을 누른다',{},[]],['“그래 됐다”까지 치다가, 지우고 전화를 건다',{},[n('‘그래 됐다’까지 치다가 한 글자씩 지운다. 이렇게 끝낼 수는 없다.'),n('메시지 창을 닫고 통화 버튼을 세게 누른다.')]]],n:'x3'},
+x3:{b:'night',t:'5. 새벽 한 시의 통화',l:[['CG','call'],n('연결음이 한 번 다 울리기도 전에 끊기듯 넘어간다.'),['CG','callon'],n('여보세요, 소리도 없다. 수화기 너머로 숨소리만 들린다. 그걸 듣자마자 참고 있던 게 터진다.'),vo(h('너 나 신경 하나도 안 써?'),'v_a.mp3'),n('수화기 너머로 숨 들이쉬는 소리가 들린다. 한참 대답이 없다.'),vo(y('생각이 너무 많았어요 그냥.'),'v_b.mp3'),h('무슨 생각? 그러니까 그게 뭔데.'),y('…지금 말하기는 좀 그래요.'),m('또 이거다. 나한테만 말해 주지 않는 거.'),vo(h('너무 답답해.'),'v_c.mp3'),y('형….'),vo(h('불안하니까.'),'v_d.mp3'),n('목이 멘다. 숨을 한 번 고르고 나서야 다음 말이 나온다.'),vo(h('나 항상 불안해하고 있단 말이야.'),'v_e.mp3'),n('말해 놓고 나서야 목소리가 떨렸다는 걸 안다. 핸드폰을 쥔 손에 땀이 찬다.'),n('침묵. 끊긴 줄 알고 화면을 내려다볼 즈음, 길게 내쉬는 숨소리가 들린다.'),vo(y('(한숨) 하… 내가 더 불안한데.'),'v_f.mp3'),n('존댓말이 아니다. 처음 듣는 말투다.'),m('…유진이가?'),n('할 말을 찾지 못한다. 수화기 너머도 조용하다. 그 한마디를 꺼내 놓고, 유진도 숨을 죽이고 있는 것 같다.'),m('형이니까 내가 더 단단해야 한다고 생각했다. 흔들리지 않는 사람이 되어 주고 싶었다.'),m('그런데 흔들리고 있던 건 나였다. 유진이의 마음 하나 확신하지 못해서.'),vo(h('내가 성숙하지 않아서 너무 미안해.'),'v_g.mp3')],n:'x4'},
+x4:{b:'night',t:'6. 끊지 못한 전화',l:[['CG','callon'],n('대답이 없다. 유진도, 나도 다음 말을 꺼내지 않는다.'),n('수화기 너머로 이불 스치는 소리가 들린다. 유진이 돌아눕는 것 같다.'),y('…형.'),h('응.'),n('부르기만 하고 유진은 더 말하지 않는다. 나도 되묻지 않는다.'),m('늦었으니 자라고 해야 하는데. 이제 끊자고 해야 하는데.')],
+c:[['“…늦었다. 자야지.” 말만 한다',{},[y('…네.'),n('대답은 했는데, 끊기는 소리는 나지 않는다. 내 엄지도 종료 버튼 근처에서 움직이지 않는다.'),n('통화 시간이 1초씩 늘어난다. 둘 다 그 숫자를 보고만 있다.'),n('누구도 먼저 끊지 않는다.')]],['아무 말 없이 숨소리를 듣는다',{},[n('작게, 고르게 이어지는 숨소리. 유진도 내 숨소리를 듣고 있을까.'),n('통화 시간이 1초씩 늘어난다. 둘 다 그 숫자를 보고만 있다.'),n('누구도 먼저 끊지 않는다.')]]],n:'h'},
+h:{b:'night',t:'5. 참았던 밤',l:[n('끊지 못한 그 통화 뒤로도 우리는 아무 일 없던 것처럼 지냈다. 며칠 뒤 밤, 연습이 길어졌다. 유진은 김민준과 약속이 있다며 먼저 나갔고, 나는 혼자 숙소로 돌아왔다.'),n('불을 켜지 않는다. 유진의 방문 손잡이에 후드티가 걸려 있다. 내가 자주 빌려 입던 그 후드다.'),n('나도 모르게 그걸 내려 입는다. 소매가 손등을 덮는다. 코 안으로 유진의 섬유유연제 냄새와 아침마다 맡던 비누 냄새가 들어온다.'),m('괜찮다고 몇 번이나 웃었더라. 괜찮다는 말이 습관이 돼 버렸다.'),m('나는 형인데. 서른 가까이 먹은 형인데, 왜 이렇게 서운하지.'),n('후드를 뒤집어쓰고 내 방 침대 위에 웅크려 앉는다.'),['CG','cry'],n('웃음이 나오지 않는다. 눈앞이 번지고 뺨이 뜨겁다. 후드 소매로 닦아도 계속 흐른다. 소매 끝이 점점 축축해지고, 유진의 냄새가 눈물 냄새와 섞인다.'),n('소리가 나지 않게 소매 안쪽으로 입을 막는다.'),m('좋아한다는 말도 못 하면서 서운해할 자격이 있나. 이 정도만 하자. 이 정도만… 그런데 안 멈춘다.')],n:'i'},
+i:{b:'night',t:'5. 참았던 밤',l:[n('현관 비밀번호 소리. 이어서 발소리. 예정보다 훨씬 일찍 유진이가 숙소에 왔다.'),n('문틈으로 거실 불빛이 들어온다. 노크 없이 열린 문 앞에 유진이 서 있다. 손에는 편의점 봉지. 내가 먹고 싶다고 했던 젤리가 보인다.'),y('…형.'),n('유진이 아무 말 없이 한 걸음 들어온다. 나는 얼굴을 돌렸지만 이미 늦었다.'),n('유진의 시선이 내가 입은 자기 후드에서 젖은 소매 끝으로 내려간다. 그 시선이 오래 머무는 것 같다.'),m('벗을 틈이 없었다. 변명할 틈도.')],n:'j'},
+j:{b:'night',t:'6. 말하지 못한 것',l:[y('형, 무슨 일 있었어요? 누가 뭐라고 했어요?'),m('말해 버리면 어린 동생한테 부담이 된다. 말하지 않으면 이 얼굴은 어떻게 설명하지.')],
+c:[['“아니야. 괜찮아, 너 왔으니까 이제 자려고.” 괜찮은 척한다',{h:2},[y('…거짓말.'),n('유진이 더 묻지 않고 내 옆에 앉는다. 어깨가 닿지 않을 만큼, 딱 한 뼘 앞에서.'),m('한 뼘이 오늘따라 너무 크다.')],'k'],['“너 기다렸어…” 솔직하게 말한다',{o:2,y:1},[n('말하고 나니 입술이 떨린다.'),y('…기다렸어요, 저를?'),n('대답 대신 유진이 내 손목을 잡는다. 힘이 세지 않은데, 놓을 수가 없다.'),m('이 말 하나에 이렇게 오래 걸렸다.')],'l'],['말없이 고개만 젓는다',{h:1},[n('유진이 한참 나를 본다. 젤리 봉지를 내 무릎 위에 내려놓는다.'),y('먹고 싶다고 했잖아요.'),m('기억하고 있었다. 그런데 나는 왜 아직도 말을 못 하지.')],'k']]},
+k:{b:'night',t:'6. 말하지 못한 것',l:[n('침묵이 길다. 시계 초침 소리가 방을 채운다. 유진이 먼저 입을 연다.'),y('형이 말 안 하면 저는 몰라요. 그게 제일 싫어요.'),m('맞다. 나는 늘 괜찮다고만 했다. 이번에도 그러면 끝이다.')],
+c:[['“진짜 아무 일 아냐. 피곤해서 그래.”',{h:3},[n('유진의 눈빛이 조금 식는 게 보인다.')],'bad'],['“…사실은 계속 신경 쓰였어.” 솔직하게 말한다',{o:2},[h('네 입에서 다른 친구 이름이 나올 때마다… 그냥… 전에는 잘 안 그랬잖아.'),n('김민준이랑 함께 있는 시간이 나와 있을 때보다 더 즐거운 건지 묻고 싶었다. 하지만 차마 그 말까지 꺼낼 수는 없었다.'),y('…그 말, 진작 하지 그랬어요.'),n('유진이 짧게 숨을 내쉰다. 화난 목소리는 아닌데 웃지도 않는다.')],'l']]},
+bad:{b:'night',t:'BAD',l:[n('유진은 한참 내 얼굴을 보다가 일어난다.'),y('알았어요. …푹 쉬어요, 형.'),n('문이 조용히 닫힌다. 평소엔 닫히기 전에 뭐라도 한마디 하던 사람이다.'),n('그 뒤로 며칠, 유진은 민준과의 약속이 늘었다. 나는 묻지 않았고 유진도 말하지 않았다. 식탁에는 내 몫의 물이 더는 놓이지 않는다.'),m('아무 일 아니라고 한 건 나다. 유진이가 그 말을 믿은 것도 당연하다. 그런데 왜 이렇게 아프지.'),n('연습실. 우리 사이 자리는 한 칸 비어 있다. 아무도 앉지 않는 그 칸을 두고 우리는 각자 거울만 본다.')],e:'B'},
+l:{b:'morn',t:'7. 달라진 거리',l:[n('다음 날 아침. 눈이 퉁퉁 부어 있다. 식탁에 유진이 있다. 내 자리 앞에 따뜻한 물과 아이스팩이 놓여 있다.'),y('눈 부었어요. 이거 대고 있어요. 스케줄 오후부터니까 더 자도 돼요.'),n('유진의 핸드폰이 울린다. 화면에 민준 이름이 뜬다. 유진은 핸드폰을 뒤집어 놓는다.'),y('김민준 형 연락이에요. 지금은 안 받을래요.'),m('안 받는다. 나 때문에.')],
+c:[['“받아도 돼, 중요한 연락 아니야?”',{h:1},[y('급한 거 아니에요. 이따 해도 돼요.'),n('유진이 짧게 말하고 핸드폰을 가방에 넣는다. 다시 울려도 꺼내지 않는다.'),m('착한 척 한 마디가 또 거리를 만든 것 같다.')]],['“…그럼 이거 그냥 네가 해 줘.”',{o:1,y:2},[n('아이스팩을 건네자 유진이 잠깐 말이 없다. 그러다 핸드폰을 내려놓고 아이스팩을 받아 든다.'),y('이리 와요. 눈 감고 있어요.'),m('차가운 아이스팩이 눈가에 닿는다. 그걸 대 주는 손이 이상하게 따뜻하다.')]],['아이스팩을 대고 웃는다',{y:1},[h('이거 시원하다. 우리 유진이 센스 있네.'),y('눈 부은 거 오늘 방송 전에 가라앉아야 돼요. 계속 대고 있어요.'),n('유진이 내 옆으로 의자를 끌어와 앉는다. 어제보다 가깝다.')]]],n:'m'},
+m:{b:'prac',t:'8. 초대',l:[n('며칠 뒤. 연습이 끝난 복도에서 민준이 손을 흔든다. 이번에는 나한테 먼저.'),g('선배님! 다음 주에 촬영 끝나서 종방연 겸 저녁 먹는데, 유진이랑 같이 오세요. 선배님 얘기 유진이한테 자주 들었어요.'),m('자주. 유진이가 나에 대해 민준한테 얘기를.'),n('옆에서 유진은 말이 없다. 가방끈을 쥔 내 손에 힘이 점점 들어간다.')],
+c:[['“좋아요, 저도 가 볼게요~” 흔쾌히 수락',{p:2},[g('잘됐다! 그럼 장소는 유진이한테 보내 놓을게요.'),y('형. 그날 저녁은… 형이 나랑 있는 날이잖아요.'),g('아, 선약이 있으셨어요? 아쉽다. 다음에 꼭 봬요!'),n('민준은 웃으며 손을 흔들고 간다. 유진은 내 소매 끝을 잡았다가 천천히 놓는다.')]],['“아, 저는 그날 선약이 있어서요.” 정중히 거절',{p:1,y:1},[g('아쉽네요. 다음엔 같이 가요!'),n('민준이 인사하고 간다. 유진은 한참 말이 없다.'),y('…선약 있었어요?'),m('사실 없다. 유진의 눈치를 살피는 내가 우습다.'),y('그 시간에 저랑 있을래요?')]],['유진을 본다. “유진이는 어때?”',{o:1,p:1},[y('저는… 형이 가고 싶으면 가요.'),n('말은 그렇게 하는데 시선이 내 손목에서 떨어지지 않는다.'),g('아, 두 분이 정하세요. 아무 때나 연락 주세요!')]]],n:'n'},
+n:{b:'ter',t:'9. 베란다',l:[n('그날 밤 숙소 베란다. 유진이 문을 닫고 내 앞에 선다. 평소처럼 담담한 얼굴인데 눈이 곧다.'),y('형. 저 요즘 형이 다른 사람이랑 웃는 거 보면 별로예요.'),h('…유진아?'),y('민준 형은 좋은 사람이에요. 그래서 더 말하기 싫었어요. 근데 형 옆에 있는 사람이 나 말고 다른 사람이면, 싫어요.'),m('유진이가 이런 말을 하는 건 처음 본다. 말투는 낮고 차분한데 손가락 끝은 난간을 단단히 쥐고 있다.')],
+c:[['“나도 똑같았어. 네가 민준이랑 웃을 때마다.” 마주 말한다',{o:2},[n('유진의 눈이 한 번 크게 흔들린다.'),y('…진짜요?'),h('내가 연습실에서 얼마나 자리를 못 찾았는지 알아?')]],['“그게 무슨 뜻인지 알고 말하는 거야?”',{o:1},[y('모를 리가요. 저도 많이 고민했어요.'),n('유진이 시선을 피하지 않는다. 이번엔 내가 먼저 눈을 돌린다.')]],['대답을 못 하고 시선을 피한다',{h:1},[y('도망가도 되는데, 오늘은 그냥 듣고 있어요.'),n('유진의 목소리가 낮다. 도망칠 곳은 사실 없다.')]]],n:'o'},
+o:{b:'ter',t:'10. 마음',l:[n('밤바람이 차다. 유진이 내 손을 잡는다. 손이 따뜻하다. 장난으로 맞잡았던 손은 많았는데 이번엔 놓을 생각이 없어 보인다.'),y('저 혼자 질투하는 줄 알았어요.',s=>s.p>=2),y('형, 말해 줘요. 이번엔 피하지 마요.'),m('나이가 많다는 핑계는 이제 쓸 수 없다. 말해야 한다.')],
+c:[['“좋아해, 유진아. 오래전부터.”',{o:2},[n('목소리가 떨린다. 유진이 잡은 손에 힘을 준다.')],'R'],['“…좋은 동생이야, 유진아.” 말을 삼킨다',{h:3},[n('유진이 손을 천천히 놓는다. 따뜻함이 바람에 날아간다.')],'eN'],['“아직은 이름 붙이지 말고, 천천히 가 보자.”',{y:1},[y('천천히요?'),h('응. 너랑 같이라면 천천히도 좋아.'),n('유진이 한참 나를 보다 고개를 끄덕인다.')],'eG']]},
+R:{b:'ter',l:[],n:s=>s.p>=2?'eS':s.o>=7?'eT':'eG'},
+eT:{b:'morn',t:'TRUE END',l:[y('…저도요. 아니, 저는 형보다 더 오래요.'),h('거짓말. 내가 더 오래야.'),n('유진이 웃는다. 지금까지 본 웃음 중 가장 오래 남을 얼굴로.'),y('그럼 이제 연락 먼저 해도 돼요? 형이 먼저 하는 것도 좋고요.'),h('매일 해. 하루에 열 번도 해.'),m('서운한 게 사라진 건 아니다. 대신 이제는 말하면 된다는 걸 안다.'),n('몇 주 뒤 연습실. 민준이 커피를 들고 와 “두 분 요즘 되게 좋아 보여요” 하며 웃는다. 유진이 내 옆자리를 툭툭 두드린다. 이번에는 내가 먼저 앉는다.')],e:'T'},
+eS:{b:'ter',t:'SPECIAL END',l:[y('형이 다른 사람 옆에 있는 게 싫다고 했죠. 사실은 그보다 더해요. 형이 웃는 얼굴은 저만 봤으면 좋겠어요. 이상한 말이죠.'),h('안 이상해. 나도 네가 민준이랑 웃을 때 그랬어.'),n('유진이 처음으로 어린 얼굴로 웃는다. 맞잡은 손이 조금 더 단단해진다.'),y('그럼 형 연락은 이제 제가 제일 먼저 받는 거예요. 약속해요.'),h('약속. 대신 너도 서운하면 말해.'),n('며칠 뒤 복도. 민준이 내게 속삭인다.'),g('선배님, 저 눈치 늦게 챘는데요. 유진이가 저한테 시선 쏘길래 그냥 도망쳤어요. 두 분 잘되셨으면 해요.'),m('유진이 내 뒤에서 헛기침을 한다. 귀가 빨갛다. 독점욕은 이렇게 귀여운 모양이기도 하다.')],e:'S'},
+eG:{b:'morn',t:'GOOD END',l:[n('우리는 베란다 난간에 나란히 기대 서서 새벽까지 이야기를 한다. 민준 이야기, 연습실 이야기, 어제 못 한 말들.'),y('형이 말해 줘서 다행이에요. 저는 기다리는 거 잘해요.'),h('내가 기다리게 하는 건 싫은데.'),y('그럼 이제 형이 먼저 불러요.'),n('다음 날부터 유진이 내 방 문을 두드리는 횟수보다 내가 유진의 방 문을 두드리는 횟수가 늘어난다.'),m('아직 이름은 없다. 대신 우리 사이에는 한 뼘이 없다.')],e:'G'},
+eN:{b:'alone',t:'NORMAL END',l:[y('…알았어요. 형도 푹 쉬어요.'),n('유진은 평소처럼 웃고 방으로 들어간다. 평소처럼, 이라는 말이 이렇게 서운한 단어였다니.'),n('그 뒤로도 우리는 장난을 치고 밥을 챙기고 무대 위에서 웃는다. 유진의 핸드폰이 울리면 나는 이제 아무렇지 않은 척이 능숙하다.'),m('삼킨 말은 아직 가슴 어딘가에 남아 있다. 언젠가는 꺼낼 수 있을까.')],e:'N'}
+};
+const E={T:['TRUE END','서로의 이름을 부르는 방','마음을 확인하고 연인이 된 두 사람.'],S:['SPECIAL END','귀여운 독점욕','유진의 숨겨진 질투가 드러난 특별한 결말.'],G:['GOOD END','한 뼘 가까이','천천히 가까워지는 두 사람.'],N:['NORMAL END','여전히 같은 그룹 멤버','마음을 표현하지 못한 채 남은 거리.'],B:['BAD END','한 칸 비어 있는 자리','질투와 오해가 쌓여 멀어진 두 사람.']};
+const $=i=>document.getElementById(i);
+function nz(t){if(typeof t!=='string')return t;const n=(st&&st.pn)||'민준',c=n.charCodeAt(n.length-1),b=c>=0xAC00&&c<=0xD7A3?(c-0xAC00)%28!==0:false,J={'이랑':'랑','이':'가','은':'는','을':'를','과':'와','아':'야'};return t.replace(/(김)?민준(이랑|이|은|을|과|아)?/g,(m,k,p)=>{const w=(k&&n==='민준')?'김민준':n;return !p?w:b?w+p:w+J[p]})}
+let st,au=0,sk=0,tm,mb=1,sf=1,ac,busy=0,hist=[],ty=0,full='';
+function cgNow(){const sl=S[st.id].l.filter(l=>!l[2]||l[2](st.s));let c='',a=0;const sc=(L,e)=>{for(let k=0;k<e&&k<L.length;k++){if(L[k][0]==='CG'){c=L[k][1];a=0}else a++}};if(st.q){sc(sl,sl.length);sc(st.q,st.i)}else sc(sl,st.i);return[c,a]}
+let phS='',phB=0,phT=0,phL=28;
+function stopPhone(){clearInterval(phT);phT=0;phS='';phB=0;$('ph').classList.remove('off')}
+function phTick(){const sec=Math.max(0,Math.floor((Date.now()-phB)/1000)),m=String(Math.floor(sec/60)).padStart(2,'0'),r=String(sec%60).padStart(2,'0');$('phs').textContent=m+':'+r}
+function phoneOff(){const sec=phB?Math.max(0,Math.floor((Date.now()-phB)/1000)):phL,m=String(Math.floor(sec/60)).padStart(2,'0'),r=String(sec%60).padStart(2,'0');phL=sec;clearInterval(phT);phT=0;phS='off';phB=0;$('phs').textContent='통화 종료';$('pht').textContent=m+':'+r;$('phd').classList.add('hide');$('ph').classList.add('off')}
+function phone(k,a){$('ph').classList.remove('off');$('ph').classList.toggle('msg',k==='msg');$('phc').textContent=k==='msg'?'AM 01:13':'AM 01:08';if(k==='msg'){stopPhone();return}if(k==='calloff')return phoneOff();if(k==='call'){stopPhone();phS='call';$('phs').textContent='전화 거는 중…';$('phd').classList.remove('hide');return}$('phd').classList.add('hide');const base=Date.now()-a*5000;if(phS!=='on'){phB=base;phS='on'}else phB=Math.min(phB,base);phTick();if(!phT)phT=setInterval(phTick,500)}
+function chatLines(){const sl=S[st.id].l.filter(l=>!l[2]||l[2](st.s)),o=[];const g=(L,e)=>{for(let k=0;k<e&&k<L.length;k++)if(L[k][0]==='TH'||L[k][0]==='TY'||L[k][0]==='RD')o.push(L[k])};if(st.q){g(sl,sl.length);g(st.q,st.i)}else g(sl,st.i);return o}
+let chN=0;function renderChat(){const A=chatLines(),L=[],un=[];A.forEach(x=>{if(x[0]==='RD'){un.length=0;return}if(x[0]==='TY')un.length=0;else un.push(L.length);L.push(x)});const c=$('cl');if(L.length<chN||c.children.length!==chN){c.innerHTML='';chN=0}for(let k=chN;k<L.length;k++){const e=document.createElement('p');e.className=(L[k][0]==='TH'?'H':'Y')+(k===L.length-1&&k>=chN&&chN>0||L.length===1?' new':'');e.textContent=L[k][1];c.append(e)}chN=L.length;[...c.children].forEach((e,k)=>e.classList.toggle('u',un.includes(k)));c.scrollTop=c.scrollHeight}
+function setCg(k,a){callAudio(k);const c=$('cg'),p=$('ph'),ch=$('chat');if(k==='chat'){c.classList.remove('on');p.classList.remove('on');stopPhone();ch.classList.add('on');renderChat();return}ch.classList.remove('on');$('cl').innerHTML='';chN=0;if(k==='call'||k==='callon'||k==='calloff'||k==='msg'){c.classList.remove('on');p.classList.add('on');phone(k,a||0);return}p.classList.remove('on');p.classList.remove('msg');stopPhone();if(k){c.style.backgroundImage='url(p_'+k+'.jpg)';c.classList.add('on')}else c.classList.remove('on')}
+['dorm','day','prac','alone','night','morn','ter','win','cry'].forEach(k=>{new Image().src='p_'+k+'.jpg'});
+const bgc={};function setBg(k){const b=$('bg'),i=$('bgi');b.className=k;i.style.backgroundImage='';const u='p_'+k+'.jpg';if(bgc[u]===undefined){const im=new Image();im.onload=()=>{bgc[u]=1;if(b.className===k)i.style.backgroundImage='url('+u+')'};im.onerror=()=>{bgc[u]=0};im.src=u}else if(bgc[u])i.style.backgroundImage='url('+u+')'}
+const ls={g:k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},s:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const toast=t=>{const d=document.createElement('div');d.id='toast';d.textContent=t;$('app').appendChild(d);setTimeout(()=>d.remove(),1400)};
+function au_(){if(!ac)try{ac=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}return ac}
+function tone(f,d,v){const a=au_();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type='square';o.frequency.value=f;g.gain.setValueAtTime(v,a.currentTime);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+d);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d)}
+let vc=null,vd=0;const VO={};['a','b','c','d','e','f','g'].forEach(k=>{const a=new Audio('v_'+k+'.mp3');a.preload='auto';VO['v_'+k+'.mp3']=a});
+let vT=0,dk=0;let onCall=0;const ring=new Audio('ring.mp3');ring.loop=true;ring.volume=.9;ring.preload='auto';
+function duck(to){if(onCall)to=0;clearInterval(dk);dk=setInterval(()=>{const v=bgm.volume,d=to-v;if(Math.abs(d)<.02){bgm.volume=to;clearInterval(dk);if(to===0&&onCall)bgm.pause()}else bgm.volume=v+d*.25},40)}
+function callAudio(k){const c=k==='call'||k==='callon'||k==='calloff'||k==='msg';if(c&&!onCall){onCall=1;duck(0)}else if(!c&&onCall){onCall=0;if(mb){bgm.volume=0;playBgm();duck(.45)}}if(k==='call'&&sf&&!sk){if(ring.paused){ring.currentTime=0;const p=ring.play();if(p&&p.catch)p.catch(()=>{})}}else if(!ring.paused)ring.pause()}
+function stopVo(){clearTimeout(vT);if(vc){vc.pause();vc.onended=null;vc=null}duck(.45)}
+function playVo(f){stopVo();if(!sf||sk||!VO[f])return;vc=VO[f];vc.currentTime=0;vc.volume=.85;duck(.16);const a=vc;vT=setTimeout(()=>{a.onended=()=>{duck(.45);vc=null;if(au&&!ty)tm=setTimeout(show,900)};const p=a.play();if(p&&p.catch)p.catch(()=>{duck(.45);vc=null})},450)}
+const bgm=new Audio('bgm.mp3');bgm.loop=true;bgm.volume=.45;bgm.preload='auto';
+function playBgm(){if(onCall){bgm.pause();return}if(mb){const p=bgm.play();if(p&&p.catch)p.catch(()=>{})}else bgm.pause()}
+function newGame(pn){hist=[];st={pn:pn||'민준',id:'a',i:0,s:{y:0,h:0,o:0,p:0},q:null,nx:null,lg:[],last:null};ui();go('a')}
+function ui(){['menu','ov'].forEach(i=>$(i).classList.add('hide'));$('game').classList.remove('hide');$('ch').classList.add('hide');$('box').classList.remove('hide');$('nm').classList.remove('hide')}
+let lastT='',chT;function chap(t){return;lastT=t;const m=t.match(/^(\d+)\.\s*(.*)$/),c=$('chap');c.querySelector('i').textContent=m?'CHAPTER '+m[1]:'';c.querySelector('span').textContent=m?m[2]:t;c.classList.add('show');clearTimeout(chT);chT=setTimeout(()=>c.classList.remove('show'),1900)}
+function go(id){clearTimeout(tm);busy=1;st.id=id;st.i=0;st.q=null;st.nx=null;const sc=S[id];$('fd').style.opacity=1;setTimeout(()=>{setBg(sc.b);chap(sc.t);$('fd').style.opacity=0;busy=0;show()},300)}
+const cur=()=>st.q||S[st.id].l.filter(l=>!l[2]||l[2](st.s));
+function show(){clearTimeout(tm);clearInterval(ty);ty=0;if(busy)return;const L=cur();while(st.i<L.length&&(L[st.i][0]==='CG'||L[st.i][0]==='RD'))st.i++;if(st.i<L.length){setCg(...cgNow());hist.push(JSON.stringify({id:st.id,i:st.i,s:st.s,q:st.q,nx:st.nx,n:st.lg.length}));if(hist.length>80)hist.shift();draw(L[st.i++]);st.hs=hist.slice(-40);ls.s('hj2_s',st)}else after()}
+function fin(){clearInterval(ty);ty=0;const tx=$('box').classList.contains('tin')?null:$('tx');if(tx)tx.textContent=full;$('box').classList.add('done');if(sk)tm=setTimeout(show,60);else if(au&&!vc)tm=setTimeout(show,1200+full.length*40)}
+function draw(l){clearInterval(ty);ty=0;st.last=l;const w=l[0],nm=$('nm'),isT=w==='TH'||w==='TY';$('tap').classList.toggle('on',isT);if(isT){nm.style.display='none';$('box').className='tin done';full=l[1];st.lg.push(l);if(st.lg.length>120)st.lg.shift();stopVo();renderChat();if(sf&&!sk)tone(w==='TH'?880:740,.06,.03);fin();return}nm.textContent=nz(NM[w]||'');nm.style.display=w==='N'?'none':'';nm.className='n'+w;const b=$('box');b.className=(w==='M'?'mono':w==='N'?'nar':'sp')+' s'+w;b.innerHTML='<span id="tx"></span><small></small>';full=nz(l[1]);const tx=$('tx');if(sk||matchMedia('(prefers-reduced-motion: reduce)').matches){tx.textContent=full;b.classList.add('done')}else{let k=0;tx.textContent='';const va=l[3]&&sf&&VO[l[3]],dur=va&&isFinite(va.duration)&&va.duration>0?va.duration*1000:0,sp=dur?Math.max(40,dur*.85/full.length):32;const run=()=>{ty=setInterval(()=>{k+=1;tx.textContent=full.slice(0,k);if(k>=full.length)fin()},sp)};if(va){ty=setTimeout(run,450)}else run()}st.lg.push(l);if(st.lg.length>120)st.lg.shift();if(l[3])playVo(l[3]);else{stopVo();if(sf&&!sk)tone(w==='M'?523:w==='Y'?660:w==='G'?587:440,.05,.03)}if(!ty)fin()}
+function after(){const sc=S[st.id];if(st.q){st.q=null;return nxt()}if(sc.c)return choices(sc);nxt()}
+function nxt(){const sc=S[st.id];if(sc.e)return ending(sc.e);let x=st.nx||sc.n;if(typeof x==='function')x=x(st.s);go(x)}
+function choices(sc){stopVo();$('tap').classList.remove('on');au=0;sk=0;$('b3').classList.remove('on');$('b4').classList.remove('on');const c=$('ch');c.innerHTML='';sc.c.forEach(o=>{const b=document.createElement('button');b.textContent=nz(o[0]);b.onclick=()=>{for(const k in o[1])st.s[k]+=o[1][k];st.lg.push(['H','▶ '+o[0]]);st.q=o[2];st.i=0;st.nx=o[3]||sc.n;c.classList.add('hide');$('box').classList.remove('hide');$('nm').classList.remove('hide');if(sf)tone(700,.1,.05);show()};c.append(b)});$('box').classList.add('hide');$('nm').classList.add('hide');c.classList.remove('hide')}
+function ending(k){stopVo();setCg('');au=sk=0;const gg=ls.g('hj2_g')||[];if(!gg.includes(k)){gg.push(k);ls.s('hj2_g',gg)}const o=$('ov');o.classList.remove('hide');o.style.justifyContent='center';o.style.textAlign='center';o.innerHTML='<small style="color:var(--pk)">'+E[k][0]+'</small><h2>'+E[k][1]+'</h2><p>'+E[k][2]+'</p>';btn(o,'엔딩 갤러리',gal);btn(o,'처음부터',()=>askName());btn(o,'타이틀로',title)}
+function askName(){au_();playBgm();const o=$('ov');o.classList.remove('hide');o.style.justifyContent='center';o.style.textAlign='center';o.innerHTML='<h2>그 사람의 이름은?</h2><p>하오와 유진 사이에 나타나는 사람이에요.<br>마음대로 지어도 돼요. (최대 5글자)</p>';const i=document.createElement('input');i.id='pn';i.maxLength=5;i.placeholder='예) 김민준';i.autocomplete='off';o.append(i);const go1=()=>newGame(i.value.replace(/[<>&"'`\\\s]/g,'').slice(0,5)||'민준');btn(o,'시작하기',go1);btn(o,'취소',title);i.onkeydown=e=>{if(e.key==='Enter')go1()};setTimeout(()=>i.focus(),50)}
+function btn(p,t,f){const b=document.createElement('button');b.className='mb';b.textContent=t;b.onclick=f;p.append(b)}
+function title(){stopVo();setCg('');$('game').classList.add('hide');$('ov').classList.add('hide');$('menu').classList.remove('hide');au=sk=0;clearTimeout(tm);clearInterval(ty);ty=0}
+function gal(){const o=$('ov');o.classList.remove('hide');o.style.justifyContent='flex-start';o.style.textAlign='left';const gg=ls.g('hj2_g')||[];o.innerHTML='<h2>엔딩 갤러리 ('+gg.length+'/'+Object.keys(E).length+')</h2>';Object.keys(E).forEach(k=>{const d=document.createElement('div');d.className='gl';d.innerHTML=gg.includes(k)?'<small>'+E[k][0]+'</small><br><b>'+E[k][1]+'</b><br>'+E[k][2]:'<small>???</small><br>아직 보지 못한 엔딩';o.append(d)});btn(o,'닫기',()=>{o.classList.add('hide');if($('game').classList.contains('hide'))$('menu').classList.remove('hide')})}
+function log(){const o=$('ov');o.classList.remove('hide');o.style.justifyContent='flex-start';o.style.textAlign='left';o.innerHTML='<h2>대화 로그</h2>';st.lg.forEach(l=>{const d=document.createElement('div');d.className='lg';const b=document.createElement('b');b.textContent=nz(NM[l[0]]||'')+' ';d.append(b,nz(l[1]));o.append(d)});btn(o,'닫기',()=>o.classList.add('hide'))}
+setInterval(()=>{const m=$('menu');if(m.classList.contains('hide'))return;const t=Math.floor((Date.now()-(window.cv0||(window.cv0=Date.now())))/1000);$('cvc').textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')},1000);
+$('bn').onclick=()=>askName();
+function cont(d){if(!d)return;hist=(d.hs||[]).slice();st=d;ui();setCg(...cgNow());setBg(S[st.id].b);lastT=S[st.id].t||'';if(st.i>=cur().length)after();else{const L=cur();draw(L[st.i-1]||st.last);st.lg.pop()}}
+$('bc').onclick=()=>{const d=ls.g('hj2_s');if(!d){toast('저장된 기록이 없어요');return}au_();playBgm();cont(d)};
+function stopAuto(){au=sk=0;clearTimeout(tm);$('b3').classList.remove('on');$('b4').classList.remove('on')}
+function back(){if(busy)return;const ch=!$('ch').classList.contains('hide');if(hist.length<(ch?1:2)){toast('이전 내용이 없어요');return}stopAuto();if(!ch)hist.pop();const d=JSON.parse(hist.pop());st.id=d.id;st.i=d.i;st.s=d.s;st.q=d.q;st.nx=d.nx;st.lg.length=Math.min(st.lg.length,d.n);setBg(S[d.id].b);$('ch').classList.add('hide');$('box').classList.remove('hide');$('nm').classList.remove('hide');$('ov').classList.add('hide');show()}
+$('bk').onclick=back;
+function resume(inGame){const o=$('ov');o.classList.remove('hide');o.style.justifyContent='center';o.style.textAlign='center';o.innerHTML='<h2>이어서 하시겠어요?</h2><p>하던 곳부터 계속할 수 있어요.</p>';btn(o,'이어서 하기',()=>{o.classList.add('hide');playBgm();if(!inGame){au_();cont(ls.g('hj2_s'))}});btn(o,'타이틀로',()=>{o.classList.add('hide');title()})}
+document.addEventListener('visibilitychange',()=>{const live=st&&!$('game').classList.contains('hide');if(!live)return;if(document.hidden){ls.s('hj2_s',st);stopAuto();stopVo();bgm.pause();ring.pause()}else if($('ov').classList.contains('hide'))resume(true)});
+$('bg2').onclick=gal;$('game').addEventListener('click',e=>{if(e.target===$('game')&&$('ch').classList.contains('hide')&&$('ov').classList.contains('hide'))$('box').onclick()});$('box').onclick=()=>{if(busy)return;if(ty){fin();return}clearTimeout(tm);show()};
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!$('game').classList.contains('hide')&&$('ch').classList.contains('hide')&&$('ov').classList.contains('hide')){e.preventDefault();$('box').onclick()}});
+$('b1').onclick=log;$('b2').onclick=()=>{ls.s('hj2_s',st);toast('저장했어요')};
+$('b3').onclick=e=>{au=!au;sk=0;e.target.classList.toggle('on',!!au);$('b4').classList.remove('on');au?show():clearTimeout(tm)};
+$('b4').onclick=e=>{sk=!sk;au=0;e.target.classList.toggle('on',!!sk);$('b3').classList.remove('on');sk?show():clearTimeout(tm)};
+$('b5').onclick=e=>{mb=!mb;e.target.classList.toggle('on',!!mb);playBgm()};$('b6').onclick=e=>{sf=!sf;if(!sf){stopVo();ring.pause()}e.target.classList.toggle('on',!!sf)};
+$('b7').onclick=()=>{ls.s('hj2_s',st);title()};
+$('b3').classList.remove('on');$('b4').classList.remove('on');title();if(ls.g('hj2_s'))resume(false);
+</script></body></html>
