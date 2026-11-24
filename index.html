@@ -2,124 +2,120 @@
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>제 선택은 형이죠</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap">
 <style>
-:root{--red:#a68cd8;--pk:#a68cd8;--ln:#e4e4e4;--moon:#f4f4f4;--mist:#9c9c9c;--lamp:#a68cd8;--frost:#e4e4e4;--temp:#e4e4e4;--line:#e4e4e4;--night:#08070b;
- --serif:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;--pix:"Noto Sans KR","Apple SD Gothic Neo",sans-serif;color-scheme:dark}
+:root{--bg:#14102a;--fg:#f6eefc;--pk:#ff8fb1;--bl:#8fb6ff;--red:#ff8fb1;--moon:#f6eefc;--mist:#b9b0d0;--lamp:#ff8fb1;--frost:#8fb6ff;--ln:#ffffff44;
+ --serif:"Gowun Dodum","Apple SD Gothic Neo",sans-serif;--pix:"Gowun Dodum","Apple SD Gothic Neo",sans-serif;color-scheme:dark}
 html,body{height:100%}
 *{box-sizing:border-box;margin:0}
-body{background:#000;color:var(--moon);font-family:var(--pix);overflow:hidden}
-#app{position:relative;height:100%;max-width:480px;margin:auto;overflow:hidden;background:var(--night)}
-/* scene + red grade */
-#bg{position:absolute;inset:0;overflow:hidden}
-#bgi,#cg{position:absolute;left:0;right:0;top:0;bottom:calc(env(safe-area-inset-bottom,0px) + 196px);-webkit-mask-image:linear-gradient(#000 82%,#0000);mask-image:linear-gradient(#000 82%,#0000);background-size:cover;background-position:center;filter:grayscale(.35) brightness(.6) contrast(1.05);transition:opacity .6s}
+body{background:var(--bg);color:var(--fg);font-family:var(--pix);overflow:hidden}
+#app{position:relative;height:100%;max-width:480px;margin:auto;overflow:hidden;background:var(--bg)}
+/* scene */
+#bg{position:absolute;inset:0;overflow:hidden;background:linear-gradient(#3b2f4f,#1c1730)}
+#bgi,#cg{position:absolute;left:0;right:0;top:0;bottom:calc(env(safe-area-inset-bottom,0px) + 196px);background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(#000 80%,#0000);mask-image:linear-gradient(#000 80%,#0000);transition:opacity .4s}
 #cg{display:none}#cg.on{display:block}
-#bg::after,#menu::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:
- radial-gradient(46px 2px at 22% 18%,#c9b6f055,#0000),radial-gradient(70px 2px at 64% 9%,#c9b6f044,#0000),radial-gradient(54px 3px at 78% 41%,#c9b6f04d,#0000),radial-gradient(80px 3px at 30% 57%,#c9b6f03a,#0000),radial-gradient(40px 2px at 86% 66%,#c9b6f044,#0000),radial-gradient(60px 2px at 12% 76%,#c9b6f02e,#0000),
- repeating-linear-gradient(90deg,#0000 0 52px,#d8ccff0b 52px 53px,#0000 53px 97px,#d8ccff12 97px 99px,#0000 99px 141px),
- linear-gradient(#0008 0,#0000 16%,#0000 100%),
- radial-gradient(120% 80% at 50% 40%,#0000 60%,#0008 100%)}
+#bg::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:linear-gradient(#14102a66 0,#14102a00 16%,#14102a00 52%,#14102a99 74%,#14102a 100%)}
+.dorm,.kitchen,.alone,.phone,.bed,.hood,.jelly,.morn,.prac,.ter{background:linear-gradient(#3b2f4f,#1c1730)}
+#fd{position:absolute;inset:0;background:var(--bg);opacity:0;pointer-events:none;z-index:9;transition:opacity .3s}
 /* phone */
 #ph{position:absolute;left:0;right:0;top:64px;bottom:calc(env(safe-area-inset-bottom,0px) + 240px);display:none;align-items:center;justify-content:center;z-index:1}
 #ph.on{display:flex}
-#phi{position:relative;height:100%;aspect-ratio:9/16;max-width:78%;border-radius:22px;background:linear-gradient(#1d1d1f,#0b0b0c 65%,#050505);container-type:inline-size;color:#f4f4f4;font-family:var(--pix);box-shadow:0 0 0 6px #000,0 0 0 7.5px #e4e4e4aa,0 24px 50px #000;overflow:hidden}
-#phc{position:absolute;left:8%;top:3.5%;font-size:4.2cqw;font-weight:500}
-#phn{position:absolute;left:0;right:0;top:19%;text-align:center;font-size:10cqw;font-weight:700}
-#phs{position:absolute;left:0;right:0;top:33%;text-align:center;font-size:4.6cqw;color:#bdbdbd}
+#phi{position:relative;height:100%;aspect-ratio:9/16;max-width:78%;border-radius:26px;background:linear-gradient(#2a2145,#14102a 65%,#0d0a1d);container-type:inline-size;color:var(--fg);font-family:var(--pix);box-shadow:0 0 0 6px #0a0618,0 0 0 7px #ffffff44,0 24px 50px #0009,0 0 40px #ff8fb122;overflow:hidden}
+#phc{position:absolute;left:8%;top:3.5%;font-size:4.2cqw}
+#phn{position:absolute;left:0;right:0;top:19%;text-align:center;font-size:10cqw}
+#phs{position:absolute;left:0;right:0;top:33%;text-align:center;font-size:4.6cqw;color:#d6cce8}
 #phd{position:absolute;left:0;right:0;top:39%;display:flex;justify-content:center;gap:3cqw}
-#phd i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:#eee;animation:pd 1.2s steps(1) infinite}
+#phd i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:var(--pk);animation:pd 1.2s steps(1) infinite}
 #phd i:nth-child(2){animation-delay:.4s}#phd i:nth-child(3){animation-delay:.8s}
 @keyframes pd{0%{opacity:1}33%{opacity:.25}66%{opacity:.25}}
 #phd.hide{display:none}
-#pht{position:absolute;left:0;right:0;top:38.5%;text-align:center;font-size:3.8cqw;color:#a5a5a5;display:none}
+#pht{position:absolute;left:0;right:0;top:38.5%;text-align:center;font-size:3.8cqw;color:#b9b0d0;display:none}
 #pbt{position:absolute;left:8%;right:8%;top:54%;display:flex;justify-content:space-between;transition:opacity .3s}
-#pbt span{display:flex;flex-direction:column;align-items:center;gap:2.4cqw;font-size:3.4cqw;color:#d0d0d0}
-#pbt i{display:grid;place-items:center;width:17cqw;height:17cqw;border-radius:50%;background:#ffffff18;font-style:normal;font-size:6cqw;filter:grayscale(1)}
-#phe{position:absolute;left:50%;top:76%;width:18cqw;height:18cqw;margin-left:-9cqw;border-radius:50%;background:var(--red);display:grid;place-items:center;transition:opacity .3s}
+#pbt span{display:flex;flex-direction:column;align-items:center;gap:2.4cqw;font-size:3.4cqw;color:#d6cce8}
+#pbt i{display:grid;place-items:center;width:17cqw;height:17cqw;border-radius:50%;background:#ffffff1a;font-style:normal;font-size:6cqw;filter:grayscale(1)}
+#phe{position:absolute;left:50%;top:76%;width:18cqw;height:18cqw;margin-left:-9cqw;border-radius:50%;background:#ff6b8f;display:grid;place-items:center;transition:opacity .3s}
 #phe i{width:8cqw;height:3cqw;border-radius:3cqw 3cqw 1cqw 1cqw;background:#fff}
 #phx,#phy,#pmt{display:none!important}
 #ph.off #pht{display:block}
 #ph.off #pbt,#ph.off #phe{opacity:.3}
 /* chat */
-#chat{position:absolute;left:16px;right:16px;top:calc(env(safe-area-inset-top,0px) + 58px);bottom:calc(env(safe-area-inset-bottom,0px) + 240px);display:none;flex-direction:column;background:#000000ee;border:1.5px solid var(--ln);border-radius:4px;z-index:1}
+#chat{position:absolute;left:14px;right:14px;top:calc(env(safe-area-inset-top,0px) + 58px);bottom:calc(env(safe-area-inset-bottom,0px) + 240px);display:none;flex-direction:column;background:#120d28e6;border:1px solid #fff4;border-radius:16px;z-index:1;box-shadow:0 14px 40px #0008}
 #chat.on{display:flex}
-#chat header{padding:11px 16px;border-bottom:1px solid #ffffff33;font-weight:700;font-size:14px;text-align:center}
+#chat header{padding:11px 16px;border-bottom:1px solid #fff2;font-size:15px;text-align:center}
 #cl{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px;scrollbar-width:none}
 #cl::-webkit-scrollbar{display:none}
-#cl p{max-width:76%;padding:8px 12px;font-size:14px;line-height:1.5;word-break:keep-all;border-radius:12px}
-#cl .H{position:relative;align-self:flex-end;background:var(--red);color:#fff;border-bottom-right-radius:3px}
-#cl .Y{align-self:flex-start;background:#262626;color:#f4f4f4;border-bottom-left-radius:3px}
+#cl p{max-width:76%;padding:8px 13px;font-size:15px;line-height:1.5;word-break:keep-all;border-radius:16px}
+#cl .H{position:relative;align-self:flex-end;background:var(--pk);color:#2a1030;border-bottom-right-radius:5px}
+#cl .Y{align-self:flex-start;background:#ffffff1c;color:var(--fg);border-bottom-left-radius:5px}
 #cl .H+.Y,#cl .Y+.H{margin-top:8px}
-#cl .H.u::before{content:"1";position:absolute;right:calc(100% + 6px);bottom:2px;font-size:11px;font-weight:700;line-height:1;color:#ffd84d}
+#cl .H.u::before{content:"1";position:absolute;right:calc(100% + 6px);bottom:2px;font-size:12px;line-height:1;color:#ffe066}
 #cl .tyb{display:flex;gap:4px;align-items:center;padding:12px 14px}
-#cl .tyb i{width:6px;height:6px;border-radius:50%;background:#bdbdbd;animation:tyd 1s ease-in-out infinite}
+#cl .tyb i{width:6px;height:6px;border-radius:50%;background:#d6cce8;animation:tyd 1s ease-in-out infinite}
 #cl .tyb i:nth-child(2){animation-delay:.15s}#cl .tyb i:nth-child(3){animation-delay:.3s}
 @keyframes tyd{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
 #cl p.new{animation:pop .28s cubic-bezier(.2,.8,.3,1.2) both}
 @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
 #box.tin,#box.tin small{visibility:hidden!important}
-#tap{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);text-align:center;font-size:12px;color:var(--mist);display:none;z-index:3;pointer-events:none;animation:bl 1.6s steps(2) infinite}
+#tap{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);text-align:center;font-size:13px;color:var(--mist);display:none;z-index:3;pointer-events:none;animation:bl 1.6s steps(2) infinite}
 #tap.on{display:block}
-#fd{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:9;transition:opacity .3s}
-.dorm,.day,.alone,.night,.morn,.prac,.ter{background:#0c0a10}
-.scr{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:14px 12px calc(env(safe-area-inset-bottom,0px) + 18px);z-index:2}
+.scr{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 14px calc(env(safe-area-inset-bottom,0px) + 14px);z-index:2}
 .hide{display:none!important}
-/* shared buttons */
-.mb,#ch button{position:relative;display:block;font-family:var(--pix);font-weight:500;color:#fff;background:#000000e6;border:1.5px solid var(--ln);border-radius:3px;cursor:pointer;transition:border-color .15s,background .15s}
-.mb::before,#ch button::before{content:"";position:absolute;left:14px;top:50%;margin-top:-5px;border-left:7px solid var(--red);border-top:5px solid transparent;border-bottom:5px solid transparent;opacity:0;transition:opacity .15s}
-.mb:first-of-type::before,#ch button:first-child::before,.mb:hover::before,.mb:focus-visible::before,#ch button:hover::before,#ch button:focus-visible::before{opacity:1}
-.mb:hover,.mb:focus-visible,#ch button:hover,#ch button:focus-visible{background:#1a1424f0;outline:0}
-.mb{width:180px;margin:0 auto;padding:10px 28px;font-size:14px;text-align:center}
-button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+/* buttons */
+.mb{display:block;width:min(260px,80%);margin:6px auto;font-family:var(--pix);font-size:18px;color:var(--fg);background:#ffffff14;border:1.5px solid #ffffff55;border-radius:12px;padding:12px;cursor:pointer;transition:background .2s,border-color .2s}
+.mb:hover,.mb:focus-visible{background:#ff8fb12b;border-color:var(--pk);outline:0}
+button:focus-visible{outline:3px solid var(--pk)}
 /* title */
-#menu{z-index:6;justify-content:center;align-items:center;text-align:center;gap:0;padding:calc(env(safe-area-inset-top,0px) + 20px) 24px calc(env(safe-area-inset-bottom,0px) + 22px);background:#000}
-#menu::before{content:"";position:absolute;inset:0;background:url(p_win.jpg) 62% 28%/cover;filter:grayscale(.35) brightness(.5) contrast(1.05)}
-#menu>*{position:relative;z-index:1}
-.cv{width:min(300px,86%);padding:26px 18px 18px;background:#000000d9;border:1.5px solid var(--ln);border-radius:3px;animation:fin 1s .1s both}
-#menu h1{font-weight:900;font-size:clamp(26px,7.6vw,34px);letter-spacing:-.01em;line-height:1.25;white-space:nowrap}
-.cv-d{display:block;width:72%;height:1px;margin:16px auto 12px;background:linear-gradient(90deg,#0000,var(--red) 20%,var(--red) 80%,#0000)}
-.cv-s{font-size:12px;color:#a8a8a8}
-.mw{display:flex;flex-direction:column;gap:10px;margin-top:9vh;animation:fin 1s .4s both}
-.cv-n{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);left:0;right:0;font-size:10px;color:#777;letter-spacing:.06em}
-@keyframes fin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.devb{margin:6px auto 0;font-family:var(--pix);font-size:12px;color:#d8c8ff;background:#000a;border:1px dashed #b9a3ea88;border-radius:3px;padding:6px 12px;cursor:pointer}
+#menu{z-index:6;align-items:center;justify-content:center;text-align:center;background:#0006}
+#menu::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(#14102a33,#14102acc),url(q_win.jpg) center 30%/cover}
+#menu>*{position:relative}
+.cv{margin-bottom:28px}
+#menu h1{font-weight:400;font-size:clamp(32px,9.5vw,52px);line-height:1.2;margin-bottom:10px;text-shadow:0 0 24px var(--pk);white-space:nowrap}
+.cv-d{display:none}
+.cv-s{opacity:.8;font-size:15px}
+.mw{width:100%;display:flex;flex-direction:column;align-items:center}
+#menu .cv-n{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:0;right:0;font-size:12px;opacity:.6}
+.devb{margin:10px auto 0;font-family:var(--pix);font-size:13px;color:#ffd6e4;background:#0006;border:1px dashed #ff8fb188;border-radius:999px;padding:6px 14px;cursor:pointer}
 /* game chrome */
-#bar{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);left:10px;right:10px;display:flex;justify-content:flex-end;gap:3px;z-index:5}
-#bar button{font-family:var(--pix);font-weight:700;font-size:10px;color:#fff;background:#000c;border:1.5px solid var(--ln);border-radius:3px;padding:3px 6px;cursor:pointer;white-space:nowrap}
-#bar button.on{border-color:var(--red);color:#c8b4f2}
+#bar{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);left:8px;right:8px;display:flex;justify-content:flex-end;gap:3px;z-index:5}
+#bar button{font-family:var(--pix);font-size:11px;letter-spacing:-.02em;color:var(--fg);background:#0007;border:1px solid #fff4;border-radius:999px;padding:4px 6px;cursor:pointer;white-space:nowrap}
+#bar button.on{background:var(--pk);color:#2a1030;border-color:var(--pk)}
 #bk{margin-right:auto}
 #chap{display:none}
-#nm{align-self:flex-start;margin:0 0 -1.5px 8px;position:relative;z-index:3;min-width:82px;padding:3px 22px;text-align:center;font-weight:700;font-size:12px;color:#fff;background:#000;border:1.5px solid var(--ln);border-radius:3px 3px 0 0}
-#nm.nM{color:#d6c6f6}
-#box{position:relative;min-height:128px;max-height:190px;overflow-y:auto;padding:18px 18px 30px;font-size:15px;line-height:1.95;word-break:keep-all;cursor:pointer;color:#fff;background:#000000e6;border:1.5px solid var(--ln);border-radius:3px;scrollbar-width:none}
+#nm{align-self:flex-start;margin:0 0 -10px 12px;position:relative;z-index:3;box-shadow:0 2px 8px #0004;background:var(--pk);color:#2a1030;border-radius:999px;padding:2px 14px;font-size:15px}
+#nm.nY{background:var(--bl);color:#10203a}
+#nm.nM{background:#ffd6e4;color:#2a1030}
+#nm.nG{background:#b6e88f;color:#1c2e10}
+#box{position:relative;min-height:128px;max-height:200px;overflow-y:auto;padding:16px 16px 26px;font-size:16px;line-height:1.75;word-break:keep-all;cursor:pointer;color:#2a2140;background:#fbf8ffee;border:1px solid #fff;border-radius:14px;scrollbar-width:none;box-shadow:0 8px 28px #0007}
 #box::-webkit-scrollbar{display:none}
-#box.nar{color:#dedede}
-#box.mono{color:#e2d6fb}
-#box small{position:absolute;right:14px;bottom:12px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #fff;visibility:hidden;animation:bl 1s steps(2) infinite}
+#box.mono{color:#a8476b}
+#box.nar{color:#3a3150}
+#box small{position:absolute;right:12px;bottom:6px;color:#7a6c96;opacity:.8;font-size:12px;visibility:hidden}
+#box small::after{content:"▼"}
 #box.done small{visibility:visible}
 @keyframes bl{50%{opacity:0}}
-#ch{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin-bottom:12px;position:relative;z-index:6}
-#ch button{width:100%;padding:12px 18px 12px 32px;font-size:14px;line-height:1.55;text-align:left;word-break:keep-all}
+#ch{display:flex;flex-direction:column;gap:9px;margin-bottom:10px;position:relative;z-index:6}
+#ch button{font-family:var(--pix);font-size:16px;color:var(--fg);background:#120d28f0;border:1.5px solid var(--bl);border-radius:12px;padding:13px 14px;text-align:left;cursor:pointer;word-break:keep-all;line-height:1.5;transition:background .2s}
+#ch button:hover,#ch button:focus-visible{background:#1f1840f5;outline:0}
 /* overlays */
-#ov{background:#000000f2;justify-content:flex-start;overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 40px) 22px 40px;z-index:8}
-#ov h2{font-size:20px;font-weight:700;margin-bottom:14px}#ov p{line-height:1.9;margin-bottom:24px;word-break:keep-all;color:#cfcfcf;font-size:14px}
-#ov>small{font-weight:900;font-size:clamp(34px,11vw,44px);letter-spacing:.01em;color:var(--red);line-height:1.1;margin-bottom:12px}
-#ov>small+h2{width:min(280px,84%);margin:0 auto 10px;padding-top:12px;border-top:1px solid #ffffff55;font-size:14px;font-weight:500}
-#ov .mb{margin:6px auto}
-.lg{padding:10px 0;border-bottom:1px solid #ffffff22;font-size:14px;line-height:1.7}.lg b{font-weight:700;font-size:11px;color:var(--red);display:block}
-.gl{border:1.5px solid var(--ln);border-radius:3px;background:#000;padding:12px 14px;margin-bottom:10px;line-height:1.7;font-size:14px}.gl small{color:var(--red);font-weight:700}
-#ov input{font-family:var(--pix);font-size:18px;text-align:center;width:min(260px,80%);margin:6px auto 18px;display:block;padding:10px;background:#000;color:#fff;border:1.5px solid var(--ln);border-radius:3px}
-#ov input:focus{outline:2px solid var(--red);outline-offset:2px}
-.dj{display:block;width:100%;text-align:left;font-family:var(--pix);background:#000;color:#fff;border:1.5px solid #ffffff55;border-radius:3px;padding:9px 12px;margin-bottom:6px;cursor:pointer;line-height:1.5;font-size:13px}
-.dj:hover{border-color:var(--red)}.dj b{font-weight:700;color:var(--red);margin-right:6px}.dj small{display:block;color:var(--mist);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#toast{position:absolute;top:56px;left:50%;transform:translateX(-50%);background:#000;border:1.5px solid var(--ln);border-radius:3px;padding:6px 14px;z-index:50;font-size:12px;font-weight:700}
+#ov{background:#0a0618f2;justify-content:flex-start;overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 30px) 20px 30px;z-index:8}
+#ov>small{color:var(--pk);letter-spacing:.1em;font-size:14px}
+#ov h2{font-size:28px;font-weight:400;margin:6px 0 12px}
+#ov p{line-height:1.8;margin:0 auto 20px;max-width:34ch;word-break:keep-all}
+.lg{padding:7px 0;border-bottom:1px solid #fff2;font-size:15px;line-height:1.6}.lg b{color:var(--pk);margin-right:6px}
+.gl{background:#ffffff12;border-radius:10px;padding:10px 12px;margin-bottom:10px;line-height:1.7;font-size:14px}.gl small{color:var(--pk)}
+#ov input{font-family:var(--pix);font-size:18px;text-align:center;width:min(260px,80%);margin:6px auto 18px;display:block;padding:10px;background:#ffffff14;color:var(--fg);border:1.5px solid #ffffff55;border-radius:12px}
+#ov input:focus{outline:3px solid var(--pk)}
+.dj{display:block;width:100%;text-align:left;font-family:var(--pix);background:#ffffff10;color:var(--fg);border:1px solid #fff3;border-radius:10px;padding:9px 12px;margin-bottom:6px;cursor:pointer;line-height:1.5;font-size:14px}
+.dj:hover{border-color:var(--pk)}.dj b{color:var(--pk);margin-right:6px;font-weight:400}.dj small{display:block;color:var(--mist);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#toast{position:absolute;top:60px;left:50%;transform:translateX(-50%);background:var(--pk);color:#2a1030;padding:6px 16px;border-radius:999px;font-size:14px;z-index:50}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+
 
 </head><body><div id="app">
 <div id="bg" class="dorm"><i id="bgi"></i><i id="cg"></i><div id="ph"><div id="phi"><span id="phc">AM 01:08</span><b id="phn">유진</b><span id="phs">전화 거는 중…</span><span id="phd"><i></i><i></i><i></i></span><span id="pht"></span><div id="pbt"><span><i>🔈</i>스피커</span><span><i>⌗</i>키패드</span><span><i>🎙</i>음소거</span></div><span id="phe"><i></i></span><span id="phx"></span><span id="phy"></span><span id="pmt">AM 01:13</span></div></div><div id="chat"><header><b>유진</b></header><div id="cl"></div></div></div><div id="fd"></div>
 <div id="menu" class="scr"><div class="cv"><h1>제 선택은 형이죠</h1><i class="cv-d"></i><p class="cv-s">가장 가까운 사람이 멀게 느껴질 때</p><b id="cvc" hidden></b></div><div class="mw"><button class="mb" id="bn">처음부터</button><button class="mb" id="bc">이어서 하기</button><button class="mb" id="bg2">엔딩 갤러리</button><button id="devj" class="devb">장면 바로가기 (수정용)</button></div><p class="cv-n">한유진 · 장하오</p></div>
-<div id="game" class="scr hide"><div id="bar"><button id="bk">◀ 뒤로</button><button id="b1">LOG</button><button id="b2">저장</button><button id="b3">자동</button><button id="b4">스킵</button><button id="b5" class="on">BGM</button><button id="b6" class="on">효과음</button><button id="b8">장면</button><button id="b7">≡</button></div>
+<div id="game" class="scr hide"><div id="bar"><button id="bk" aria-label="뒤로">←</button><button id="b1">로그</button><button id="b2">저장</button><button id="b3">자동</button><button id="b4">스킵</button><button id="b5" class="on">BGM</button><button id="b6" class="on">효과음</button><button id="b8">장면</button><button id="b7">메뉴</button></div>
 <div id="ch" class="hide"></div><div id="nm"></div><div id="box"></div><div id="tap">화면을 눌러 계속</div></div>
 <div id="ov" class="scr hide"></div>
 </div>
@@ -131,7 +127,7 @@ const NM={M:'하오 (속마음)',H:'하오',Y:'한유진',G:'김민준',TH:'하�
 const S={
 a:{b:'dorm',t:'1. 숙소의 밤',l:[n('새벽 한 시가 가까운 숙소 거실. 연습을 마친 우리는 소파에 늘어져 있다. 나는 유진이 손에 든 과자 봉지만 노려본다.'),h('유진아, 한 입만. 아~'),n('입을 벌린 채 눈만 동그랗게 뜨고 올려다본다. 과자를 집던 유진의 손이 멈춘다.'),y('형, 그렇게 귀엽게 쳐다봐도 안 돼요.'),n('유진이 작게 한숨을 쉰다. 먹고 있던 과자를 다정하게 집어 내 입에 넣어 준다. 손끝이 입술 가장자리를 스치고 지나간다.'),y('…말티즈처럼 먹네.'),n('작게 중얼거리고는 유진이 입꼬리를 슬쩍 올린다. 놀리는 말인데 목소리가 이상하게 다정하다.'),h('말티즈? 나 지금 강아지 취급당한 거야?'),y('그래도 깨무는 건 안 돼요.'),n('말끝에 유진이 장난스럽게 웃는다. 그 얼굴을 보고 있자니 나도 모르게 따라 웃게 된다.'),m('이런 사소한 게 좋아서 매일 모른 척 장난을 친다. 좋아한다는 말은 장난에도 못 섞으면서.')],
 c:[['유진의 어깨에 기댄다',{y:1},[y('…무거워요, 형.'),n('그러면서도 내가 편하도록 어깨를 살짝 낮춰 준다. 귀끝이 조금 빨갛다.')]],['“하나 더~” 다시 아~ 하고 입을 벌린다',{y:1},[y('…하나만이에요. 진짜로.'),n('그러면서 또 하나를 집어 내 입에 넣어 준다. 입을 다문 채 우물거리는 나를 보고 유진이 작게 웃는다.'),h('유진이가 주니까 더 맛있다~'),n('유진은 대꾸 없이 새 봉지를 뜯어 내 앞에 놓는다. 투덜대는 말과 행동이 반대다.')]],['“고생했어, 우리 유진이” 머리를 쓰다듬는다',{y:1,o:1},[y('…갑자기 왜 그래요.'),n('피하지는 않는다. 손바닥 밑에서 유진이가 눈을 한 번 감았다 뜬다.'),m('좋아한다는 말 대신 오늘도 이것만 했다.')]]],n:'b'},
-b:{b:'dorm',t:'1. 숙소의 밤',l:[n('다음 날 저녁. 식탁에서 라면 물을 올려 놓고 기다리는데, 맞은편 유진의 핸드폰이 짧게 울린다.'),n('화면을 본 유진이 피식 웃는다. 잘 웃지 않는 사람이 소리까지 내서.'),y('아, 민준 형이에요. 어제 같이 본 영화 결말 갖고 또 한마디 하네요.'),m('민준. 배우 김민준. 언제부터 이 이름이 이렇게 자연스럽게 나오기 시작했더라.')],
+b:{b:'kitchen',t:'1. 숙소의 밤',l:[n('다음 날 저녁. 식탁에서 라면 물을 올려 놓고 기다리는데, 맞은편 유진의 핸드폰이 짧게 울린다.'),n('화면을 본 유진이 피식 웃는다. 잘 웃지 않는 사람이 소리까지 내서.'),y('아, 민준 형이에요. 어제 같이 본 영화 결말 갖고 또 한마디 하네요.'),m('민준. 배우 김민준. 언제부터 이 이름이 이렇게 자연스럽게 나오기 시작했더라.')],
 c:[['“둘이 많이 친해졌나 보네.”',{y:1,o:1},[n('장하오가 작게 웅얼거렸다. 말끝이 입 안에서 흐려졌다.'),y('네? 방금 뭐라고 하셨어요?'),h('아냐, 혼잣말~'),y('민준 형이요? 그냥 연락 자주 하는 형이에요. 시간 되면 같이 봐요.'),m('같이 보자는 말이 반가워야 하는데, 이상하게 한 박자 늦게 웃게 된다.')]],['“좋겠네, 친한 형 생겨서~” 웃어넘긴다',{h:1},[y('형이라기엔… 그냥 편해요. 형이랑 나이도 비슷해서 그런가.'),m('나랑 나이가 비슷한 형. 유진이한테 연상의 친한 사람이 생긴 건데, 나랑 비슷해서 편하다는 말이 신경 쓰인다.'),m('이미 유진이 옆에는 내가 있는데, 굳이 다른 사람이 필요할까 싶었다.')]],['말없이 라면 불을 줄인다',{h:1},[n('유진은 핸드폰을 보며 답장을 친다. 엄지가 빠르다. 나는 끓지도 않는 라면 물만 본다.'),m('물이 끓는 소리가 유진의 웃음소리보다 작게 들린다.')]]],n:'c'},
 c:{b:'prac',t:'2. 연습실',l:[n('일주일 뒤 오후, 연습실. 휴식 시간에 문이 열리고 커피 트레이를 든 키 큰 남자가 들어온다. 배우 김민준이다.'),g('안녕하세요! 근처에서 촬영하다가 인사만 드리려고 왔어요. 하오 선배님 맞으시죠?'),h('아, 안녕하세요. 커피 감사해요.'),n('민준은 예의 바르고 사람 좋아 보인다. 그래서 더 곤란하다. 싫어할 구석이 없다.'),n('곧 유진이 바닥에서 일어나 민준 쪽으로 걸어간다. 서로 어깨를 툭 치고, 내가 모르는 농담에 동시에 웃는다.'),m('나한테는 존댓말을 쓰던 유진이가 민준한테는 말을 반쯤 놓는다. 그게 왜 이렇게 눈에 들어올까.')],
 c:[['둘 사이에 자연스럽게 끼어든다',{y:1,o:1},[h('무슨 얘기야~ 나도 껴 줘.'),g('아, 유진이가 선배님이 요리 잘한다고 자랑했어요.'),y('…그 얘기까지 하지 마요.'),m('자랑했다고? 나를? 서운함이 반쯤 녹는다.')]],['멀찍이서 물을 마시며 지켜본다',{h:1},[n('물병을 입에 대고 있지만 삼키지는 않는다. 거울 속에서 둘이 나란히 서 있다.'),m('둘의 모습이 잘 어울린다. 그게 문제다.')]],['스태프에게 가서 일부러 바쁜 척한다',{h:2},[h('저기, 다음 안무 동선 확인해도 될까요?'),n('필요 없는 확인이다. 등 뒤에서 유진의 웃음소리가 들린다. 돌아보지 않는다.')]]],n:'d'},
@@ -141,17 +137,17 @@ e:{b:'dorm',t:'3. 약속',l:[n('그날 저녁 숙소. 유진이 현관 앞에서
 c:[['“알겠어… 조심히 다녀와.”',{h:2},[y('정말 괜찮아요?'),h('괜찮지~ 형은 라면 혼자 먹으면 되지!'),n('유진이 내 얼굴을 한 번 더 보다가 고개를 끄덕인다.'),m('들켰나. 아니, 안 들켰겠지.')]],['“오늘 나랑 라면 먹기로 했잖아…” 서운한 티를 조금 낸다',{o:1,p:1},[y('아… 맞다. 죄송해요.'),n('유진이 잠깐 입을 닫았다가 말한다.'),y('일찍 올게요. 형이 먹고 싶다는 거 사 올게요.'),m('투정 부렸다 싶어 얼굴이 뜨겁다. 그런데 일찍 오겠다는 말이 이상하게 오래 남는다.')]],['“저녁은 나랑 먹으면 안 돼?”',{h:1},[y('아… 오늘은 먼저 잡은 약속이라서요. 다음에 같이 먹어요.'),n('유진이 대수롭지 않게 대답한다. 그 대수롭지 않음이 더 아프다.')]]],n:'f'},
 f:{b:'alone',t:'3. 약속',l:[n('유진이 나간 저녁. 숙소가 이렇게 넓었나. 유진이 없으니 TV 소리만 크다.'),n('혼자 끓인 라면은 맛이 없다. 결국 두 젓가락 먹고 내려놓았다.'),['CG','win'],m('지금쯤 뭐 하고 있을까.'),n('몇 시간이 흘러 시계는 어느새 새벽 한 시를 넘겼다. 유진은 아직 돌아오지 않았다.'),n('통화 목록을 연다. 맨 위에 유진의 이름이 있다. 통화 버튼 위에 엄지를 올렸다가 내린다. 다시 올린다.')],
 c:[['“유진아, 언제 들어와?” 전화를 건다',{y:1,o:1},[['CG','call'],n('통화 버튼을 누른다. 연결음이 길게 이어진다.'),['CG','callon'],n('연결음이 세 번 울리고 유진이 받는다.'),h('유진아, 언제 들어와?'),y('어… 아직요. 형 아직 안 잤어요?'),h('네가 아직 안 와서…'),y('얘기가 아직 안 끝나서, 형 먼저 자요. 나중에 연락할게요.'),n('말투는 평소와 같은데 속도가 빠르다. 대답 사이사이 뒤쪽 소리에 귀를 기울이는 것 같다. 내가 무슨 말을 더 하기도 전에 통화가 끊긴다.'),['CG','calloff'],m('얼른 끊고 싶어 하는 것 같았는데, 내 착각일까. 괜히 전화를 걸어 방해한 것만 같아 기분이 저조해진다.'),['CG','chat'],n('몇 분 뒤 메시지가 온다.'),tY('금방 들어갈게요'),n('그 한 줄을 세 번 읽는다.'),['CG','win'],m('연락이 됐으니 그걸로 됐다고 말하고 싶은데, 마음이 잘 따라 주지 않는다.')]],['통화 버튼에서 손을 뗀다',{h:2},[n('핸드폰을 엎어 놓는다.'),m('방해하는 사람이 되기 싫다. 나이도 더 많은 주제에.'),m('어른스러운 척, 사실은 겁쟁이.')]],['멤버 단톡방에서 아무 이야기나 한다',{h:1},[n('단톡방에 의미 없는 사진을 올린다. 멤버들이 웃음 이모티콘을 달아 준다.'),m('유진의 이름만 대화창 맨 아래에 조용히 남아 있다.')]]],n:'g'},
-g:{b:'day',t:'4. 조용해진 사람',l:[n('며칠 뒤 아침, 식탁. 유진이 핸드폰을 보다가 또 웃는다. 나는 숟가락을 든 채 그 얼굴을 본다.'),n('평소라면 “뭐 봐? 나도 보여줘~” 하며 어깨를 부딪혔을 거다. 하지만 오늘은 목소리가 나오지 않는다.'),h('…밥 먹자.'),y('네? 아, 네. 형 어제 늦게 잤어요? 피곤해 보이는데.'),m('평소처럼 웃으며 말을 건네는 일이 이렇게 어려운 일이었나.')],
+g:{b:'phone',t:'4. 조용해진 사람',l:[n('며칠 뒤 아침, 식탁. 유진이 핸드폰을 보다가 또 웃는다. 나는 숟가락을 든 채 그 얼굴을 본다.'),n('평소라면 “뭐 봐? 나도 보여줘~” 하며 어깨를 부딪혔을 거다. 하지만 오늘은 목소리가 나오지 않는다.'),h('…밥 먹자.'),y('네? 아, 네. 형 어제 늦게 잤어요? 피곤해 보이는데.'),m('평소처럼 웃으며 말을 건네는 일이 이렇게 어려운 일이었나.')],
 c:[['“왜 얼굴 많이 부었어~?” 라며 억지로 장난을 건다',{h:1},[y('…안 부었어요. 살 빠진 것 같은데.'),n('유진이 웃지 않는다. 웃음을 기대했던 내 입꼬리만 어색하게 남는다.')]],['“아직 잠이 덜 깼나 보지.” 방으로 간다',{h:2,y:-1},[n('방문을 닫고 등을 기댄다. 식탁에서 유진이 의자를 미는 소리가 들린다. 따라오는 발소리는 없다.'),m('따라와 주길 바란 내가 제일 이상하다.')]],['“유진아, 오늘 저녁에 시간 돼?” 용기를 낸다',{o:1,y:1},[y('오늘이요? …네, 돼요.'),h('그럼 같이 밥 먹자. 형이 쏠게.'),n('유진이 핸드폰을 내려놓고 나를 똑바로 본다. 그제야 내가 이 시선을 얼마나 기다렸는지 안다.')]]],n:'x1'},
-x1:{b:'day',t:'5. 먼저 보내는 메시지',l:[n('며칠이 지난다. 각자 스케줄이 많아 숙소에서 얼굴 볼 일이 줄었다.'),n('메시지 창을 연다. 위로 올려 봐도 대화의 시작은 늘 내 말풍선이다.'),['CG','chat'],tH('유진아 밥은 먹었어?'),tH('오늘 촬영장 춥던데 따뜻하게 입어'),['RD'],n('숫자 1이 사라지고, 답장은 금방 온다.'),tY('네 먹었어요'),tY('형도 꼭 챙겨 먹어요'),n('다정한 답장. 거기서 끝이다.'),m('대화를 이어 가는 건 이번에도 내 몫이다.')],
+x1:{b:'phone',t:'5. 먼저 보내는 메시지',l:[n('며칠이 지난다. 각자 스케줄이 많아 숙소에서 얼굴 볼 일이 줄었다.'),n('메시지 창을 연다. 위로 올려 봐도 대화의 시작은 늘 내 말풍선이다.'),['CG','chat'],tH('유진아 밥은 먹었어?'),tH('오늘 촬영장 춥던데 따뜻하게 입어'),['RD'],n('숫자 1이 사라지고, 답장은 금방 온다.'),tY('네 먹었어요'),tY('형도 꼭 챙겨 먹어요'),n('다정한 답장. 거기서 끝이다.'),m('대화를 이어 가는 건 이번에도 내 몫이다.')],
 c:[['“오늘 끝나고 뭐 해?” 한 번 더 보낸다',{},[tH('오늘 끝나고 뭐 해?'),['RD'],n('1은 금방 사라진다. 답은 한참 뒤에 온다.'),tY('피곤해서 숙소 가서 쉬려고요'),tY('그럼 저 이제 촬영 들어갈게요'),tH('응 열심히 해')]],['“응 알겠어”라고 답장한다',{},[tH('응 알겠어'),['RD'],n('1이 사라진다. 그걸로 끝이다.'),m('알겠다고 보낸 건 나인데, 뭘 더 기다리는 걸까. 알면서도 화면을 몇 번 더 켜 본다.')]],['쓰던 메시지를 지운다',{},[n('‘요즘 나한테 서운한 거 있어?’ 썼다가 한 글자씩 지운다.'),m('일곱 살이나 많은 형이 할 말은 아니다.')]]],n:'x2'},
-x2:{b:'alone',t:'6. 읽고 답 없는 밤',l:[n('밤 열두 시가 넘었다. 유진은 아직 숙소에 들어오지 않았다.'),['CG','win'],m('내가 너무 예민하게 구는 걸 수도 있다. 유진이 바쁘다는 건 누구보다 잘 알고 있으니까.'),m('그런데도 자꾸 서운한 마음이 드는 건 어쩔 수 없었다.'),m('좋아하는 사람에게 나만 계속 다가가는 건, 생각보다 외로운 일이니까.'),n('결국 메시지 창을 연다.'),['CG','chat'],tH('언제 들어와?'),n('1이 그대로 떠 있다. 1분, 2분.'),['RD'],n('…1이 사라진다.'),tY('조금 늦을 것 같아요'),tY('왜요?'),tH('지금 스케줄 끝난 거 아니야?'),tY('민준이 형 좀 만나고 갈게요'),m('심장이 덜컥 내려앉았다. 발밑이 한순간 꺼져 버린 것만 같았다.'),tH('그래'),tH('너 마음대로 해'),n('보내 놓고 보니 말끝이 뾰족하다. 지울까 하다가 그냥 둔다.'),tY('형'),tY('하고 싶은 말이 있으면 해요'),m('들켰다. 아니, 들키고 싶었던 걸지도 모른다.'),tH('요즘 집에 너무 늦게 오는 거 같아'),tY('바빠서 그래요'),tY('형도 알잖아요'),m('바쁜 거 안다. 그런데 이해하려고 애쓸수록 오히려 서운함이 더 커지는 것 같다.'),tH('알아'),tH('근데 왜 요즘 나랑은 안 놀아?'),['RD'],tw(n('1이 사라진다. 입력 중 표시가 떴다가 사라지고, 다시 뜬다.')),tY('제가요?'),tH('왜 아니야?'),tY('아닌 거 알잖아요'),n('마침표 하나 없는 짧은 답장.'),n('그 한 줄을 보는 순간, 가슴 밑에서 뭔가 확 치민다.'),m('그걸 내가 어떻게 알아. 내 마음도 모르겠는데.'),n('손이 떨린다. 생각보다 손가락이 먼저 움직인다.')],
+x2:{b:'bed',t:'6. 읽고 답 없는 밤',l:[n('밤 열두 시가 넘었다. 유진은 아직 숙소에 들어오지 않았다.'),['CG','win'],m('내가 너무 예민하게 구는 걸 수도 있다. 유진이 바쁘다는 건 누구보다 잘 알고 있으니까.'),m('그런데도 자꾸 서운한 마음이 드는 건 어쩔 수 없었다.'),m('좋아하는 사람에게 나만 계속 다가가는 건, 생각보다 외로운 일이니까.'),n('결국 메시지 창을 연다.'),['CG','chat'],tH('언제 들어와?'),n('1이 그대로 떠 있다. 1분, 2분.'),['RD'],n('…1이 사라진다.'),tY('조금 늦을 것 같아요'),tY('왜요?'),tH('지금 스케줄 끝난 거 아니야?'),tY('민준이 형 좀 만나고 갈게요'),m('심장이 덜컥 내려앉았다. 발밑이 한순간 꺼져 버린 것만 같았다.'),tH('그래'),tH('너 마음대로 해'),n('보내 놓고 보니 말끝이 뾰족하다. 지울까 하다가 그냥 둔다.'),tY('형'),tY('하고 싶은 말이 있으면 해요'),m('들켰다. 아니, 들키고 싶었던 걸지도 모른다.'),tH('요즘 집에 너무 늦게 오는 거 같아'),tY('바빠서 그래요'),tY('형도 알잖아요'),m('바쁜 거 안다. 그런데 이해하려고 애쓸수록 오히려 서운함이 더 커지는 것 같다.'),tH('알아'),tH('근데 왜 요즘 나랑은 안 놀아?'),['RD'],tw(n('1이 사라진다. 입력 중 표시가 떴다가 사라지고, 다시 뜬다.')),tY('제가요?'),tH('왜 아니야?'),tY('아닌 거 알잖아요'),n('마침표 하나 없는 짧은 답장.'),n('그 한 줄을 보는 순간, 가슴 밑에서 뭔가 확 치민다.'),m('그걸 내가 어떻게 알아. 내 마음도 모르겠는데.'),n('손이 떨린다. 생각보다 손가락이 먼저 움직인다.')],
 c:[['참지 않고 통화 버튼을 누른다',{},[]],['“그래 됐다”까지 치다가, 지우고 전화를 건다',{},[n('‘그래 됐다’까지 치다가 한 글자씩 지운다. 이렇게 끝낼 수는 없다.'),n('메시지 창을 닫고 통화 버튼을 세게 누른다.')]]],n:'x3'},
-x3:{b:'night',t:'7. 새벽 한 시의 통화',l:[['CG','call'],n('연결음이 한 번 다 울리기도 전에 끊기듯 넘어간다.'),['CG','callon'],n('여보세요, 소리도 없다. 수화기 너머로 숨소리만 들린다. 그걸 듣자마자 참고 있던 게 터진다.'),vo(h('너 나 신경 하나도 안 써?'),'v_a.mp3'),y('형을 어떻게 신경을 안 써요.'),h('근데 자꾸 나를 피하잖아.'),vo(y('생각이 너무 많았어요 그냥.'),'v_b.mp3'),h('무슨 생각? 나한텐 말 못 해?'),y('나중에… 나중에 다 말해 줄게요.'),vo(h('너무 답답해.'),'v_c.mp3'),vo(h('불안하니까.'),'v_d.mp3'),n('목이 멘다. 숨을 한 번 고르고 나서야 다음 말이 나온다.'),vo(h('나 항상 불안해하고 있단 말이야.'),'v_e.mp3'),n('말해 놓고 나서야 목소리가 떨렸다는 걸 안다. 핸드폰을 쥔 손에 땀이 찬다.'),n('침묵. 끊긴 줄 알고 화면을 내려다볼 즈음, 길게 내쉬는 숨소리가 들린다.'),vo(y('(한숨) 하… 내가 더 불안한데.'),'v_f.mp3'),m('순간 아차 싶었다. 순간의 감정에 휩쓸려 미처 다스리지 못한 감정의 끝이 애꿎은 유진을 향했던 것 같다.'),n('목구멍 끝까지 뜨거운 것이 차오른다. 애써 눌러 왔던 감정이 한순간에 역류했다.'),n('입술을 깨물어도 소용없다. 떨리는 숨이 수화기 너머로 그대로 새어 나간다.'),vo(h('내가 성숙하지 않아서 너무 미안해.'),'v_g.mp3'),h('미안. 그냥 잊어 줘.'),['CG','calloff'],n('유진이 대답하기도 전에 통화 종료 버튼을 누른다.')],n:'h'},
-h:{b:'night',t:'8. 참았던 밤',l:[n('고개를 들어 보니 내 방 벽에 걸린 유진의 후드가 보인다. 내가 자주 빌려 입던 그 후드다.'),n('나도 모르게 그걸 내려 입는다. 소매가 손등을 덮는다. 유진의 옷에서 내가 좋아하는 섬유유연제 향이 난다.'),m('나는 유진이보다 일곱 살이나 많은 형인데, 왜 이렇게 서운하지.'),n('후드를 뒤집어쓰고 침대 위에 웅크려 앉는다.'),['CG','cry'],n('무릎 사이에 얼굴을 묻자 참아 왔던 눈물이 뚝뚝 떨어진다. 소매 끝이 점점 축축해지고, 내 눈물에 유진의 냄새가 섞인다.'),n('소리가 밖으로 새지 않게 무릎에 얼굴을 더 깊숙이 묻는다.'),m('좋아한다는 말도 못 하면서 서운해할 자격이나 있겠어. 이 정도만 하자, 이 정도만. 다시 감정을 꾹꾹 눌러 보지만, 그게 잘 안 된다.')],n:'i'},
-i:{b:'night',t:'8. 참았던 밤',l:[n('현관 비밀번호 소리. 예정보다 훨씬 일찍 유진이가 숙소에 왔다. 현관문이 닫히는 소리가 들리기도 전에, 다급한 유진의 발소리가 들린다.'),n('노크도 없이 방문이 열린다. 문 앞에 유진이 서 있다. 손에는 편의점 봉지가 들려 있다. 그 안에 내가 먹고 싶다고 했던 젤리가 보인다.'),n('유진이 아무 말 없이 한 걸음 들어온다. 나는 얼굴을 돌렸지만 이미 늦었다.'),n('유진의 시선이 내가 입고 있는 자기 후드에 잠시 머물다가, 눈물에 젖은 소매 끝으로 천천히 옮겨 간다.'),m('벗을 틈이 없었다. 변명할 틈도.')],
+x3:{b:'bed',t:'7. 새벽 한 시의 통화',l:[['CG','call'],n('연결음이 한 번 다 울리기도 전에 끊기듯 넘어간다.'),['CG','callon'],n('여보세요, 소리도 없다. 수화기 너머로 숨소리만 들린다. 그걸 듣자마자 참고 있던 게 터진다.'),vo(h('너 나 신경 하나도 안 써?'),'v_a.mp3'),y('형을 어떻게 신경을 안 써요.'),h('근데 자꾸 나를 피하잖아.'),vo(y('생각이 너무 많았어요 그냥.'),'v_b.mp3'),h('무슨 생각? 나한텐 말 못 해?'),y('나중에… 나중에 다 말해 줄게요.'),vo(h('너무 답답해.'),'v_c.mp3'),vo(h('불안하니까.'),'v_d.mp3'),n('목이 멘다. 숨을 한 번 고르고 나서야 다음 말이 나온다.'),vo(h('나 항상 불안해하고 있단 말이야.'),'v_e.mp3'),n('말해 놓고 나서야 목소리가 떨렸다는 걸 안다. 핸드폰을 쥔 손에 땀이 찬다.'),n('침묵. 끊긴 줄 알고 화면을 내려다볼 즈음, 길게 내쉬는 숨소리가 들린다.'),vo(y('(한숨) 하… 내가 더 불안한데.'),'v_f.mp3'),m('순간 아차 싶었다. 순간의 감정에 휩쓸려 미처 다스리지 못한 감정의 끝이 애꿎은 유진을 향했던 것 같다.'),n('목구멍 끝까지 뜨거운 것이 차오른다. 애써 눌러 왔던 감정이 한순간에 역류했다.'),n('입술을 깨물어도 소용없다. 떨리는 숨이 수화기 너머로 그대로 새어 나간다.'),vo(h('내가 성숙하지 않아서 너무 미안해.'),'v_g.mp3'),h('미안. 그냥 잊어 줘.'),['CG','calloff'],n('유진이 대답하기도 전에 통화 종료 버튼을 누른다.')],n:'h'},
+h:{b:'hood',t:'8. 참았던 밤',l:[n('고개를 들어 보니 내 방 벽에 걸린 유진의 후드가 보인다. 내가 자주 빌려 입던 그 후드다.'),n('나도 모르게 그걸 내려 입는다. 소매가 손등을 덮는다. 유진의 옷에서 내가 좋아하는 섬유유연제 향이 난다.'),m('나는 유진이보다 일곱 살이나 많은 형인데, 왜 이렇게 서운하지.'),n('후드를 뒤집어쓰고 침대 위에 웅크려 앉는다.'),['CG','cry'],n('무릎 사이에 얼굴을 묻자 참아 왔던 눈물이 뚝뚝 떨어진다. 소매 끝이 점점 축축해지고, 내 눈물에 유진의 냄새가 섞인다.'),n('소리가 밖으로 새지 않게 무릎에 얼굴을 더 깊숙이 묻는다.'),m('좋아한다는 말도 못 하면서 서운해할 자격이나 있겠어. 이 정도만 하자, 이 정도만. 다시 감정을 꾹꾹 눌러 보지만, 그게 잘 안 된다.')],n:'i'},
+i:{b:'jelly',t:'8. 참았던 밤',l:[n('현관 비밀번호 소리. 예정보다 훨씬 일찍 유진이가 숙소에 왔다. 현관문이 닫히는 소리가 들리기도 전에, 다급한 유진의 발소리가 들린다.'),n('노크도 없이 방문이 열린다. 문 앞에 유진이 서 있다. 손에는 편의점 봉지가 들려 있다. 그 안에 내가 먹고 싶다고 했던 젤리가 보인다.'),n('유진이 아무 말 없이 한 걸음 들어온다. 나는 얼굴을 돌렸지만 이미 늦었다.'),n('유진의 시선이 내가 입고 있는 자기 후드에 잠시 머물다가, 눈물에 젖은 소매 끝으로 천천히 옮겨 간다.'),m('벗을 틈이 없었다. 변명할 틈도.')],
 c:[['“형이 왜 미안해요.” 유진이 속상한 얼굴로 묻는다',{},[y('형이 왜 미안해요.'),n('유진이 침대 앞에 무릎을 꿇고 앉아 내 얼굴을 올려다본다.'),y('그렇게 끊어 버리면 제가 어떻게 잊어요.'),m('나도 모르게 내뱉은 말이었는데, 그 말을 붙잡고 여기까지 달려올 줄은 몰랐다.')]],['유진이 말없이 눈물을 닦아 준다',{},[n('유진이 말없이 손을 뻗어 내 눈가의 눈물을 닦아 준다.'),n('손끝이 차갑다. 밖에서부터 뛰어온 사람의 손이다.'),m('밀어내야 하는데, 나도 모르게 그 손에 얼굴을 기대고 만다.'),y('…울지 마요, 형.')]],['“왜 벌써 왔어..?” 하오가 눈물을 감추며 묻는다',{p:2},[h('왜 벌써 왔어..?'),h('아니야… 그냥 나 안아 줘..'),n('유진이 대답 대신 봉지를 내려놓고 나를 끌어안는다.'),n('맞닿은 가슴 너머로 유진의 심장 소리가 들린다. 쿵, 쿵, 쿵. 숨이 찰 만큼 빠르다.'),m('…여기까지 뛰어왔구나. 나 때문에.'),y('제가 미안해요.')]]],n:'k'},
-k:{b:'night',t:'9. 말하지 못한 것',l:[y('저는 자꾸 형만 신경 쓰여서… 혹시 형이 그걸 부담스러워할까 봐, 그게 무서웠어요.'),m('나만 불안한 줄 알았다. 유진이도 나만큼, 어쩌면 나보다 더 흔들리고 있었다. 이번엔 나도 말해야 한다.'),h('부담 안 가져. 나는… 유진이가 나를 더 신경 써 줬으면 좋겠어.'),m('사실 알고 있었다. 유진이는 늘 나를 지켜보고, 내가 조금만 달라져도 먼저 알아채고 안아 주던 애라는 걸.'),y('형이 조금이라도 달라지면 누구보다 제가 먼저 알아요.')],add:{o:2},n:'l'},
+k:{b:'bed',t:'9. 말하지 못한 것',l:[y('저는 자꾸 형만 신경 쓰여서… 혹시 형이 그걸 부담스러워할까 봐, 그게 무서웠어요.'),m('나만 불안한 줄 알았다. 유진이도 나만큼, 어쩌면 나보다 더 흔들리고 있었다. 이번엔 나도 말해야 한다.'),h('부담 안 가져. 나는… 유진이가 나를 더 신경 써 줬으면 좋겠어.'),m('사실 알고 있었다. 유진이는 늘 나를 지켜보고, 내가 조금만 달라져도 먼저 알아채고 안아 주던 애라는 걸.'),y('형이 조금이라도 달라지면 누구보다 제가 먼저 알아요.')],add:{o:2},n:'l'},
 l:{b:'morn',t:'10. 달라진 거리',l:[n('다음 날 아침. 눈이 퉁퉁 부어 있다. 식탁에 유진이 있다. 내 자리 앞에 따뜻한 물과 아이스팩이 놓여 있다.'),y('눈 부었어요. 이거 대고 있어요. 스케줄 오후부터니까 더 자도 돼요.'),n('유진의 핸드폰이 울린다. 화면에 민준 이름이 뜬다. 유진은 핸드폰을 뒤집어 놓는다.'),y('김민준 형 연락이에요. 지금은 안 받을래요.'),m('안 받는다. 나 때문에.')],
 c:[['“받아도 돼. 나 괜찮아.”',{h:1},[y('…괜찮다는 사람 표정이 왜 그래요.'),n('유진이 휴대전화의 알림을 끄고 뒤집어 놓는다. 그러고는 방해받고 싶지 않다는 듯 온전히 내게 시선을 돌린다.'),y('급한 거 아니에요. 지금은 형이 먼저예요.'),m('괜찮다는 말이 또 먼저 나왔다. 하나도 안 괜찮으면서. 그걸 유진이는 또 알아챘다.')]],['“…이거 네 손으로 해 줘.”',{o:1,y:2},[n('아이스팩을 내밀자 유진이 잠깐 나를 본다. 그러다 핸드폰을 내려놓고 아이스팩을 받아 든다.'),y('이리 와요. 눈 감고 있어요.'),m('차가운 아이스팩이 눈가에 닿는다. 그걸 대 주는 유진의 손이 이상하게 따뜻하다.')]],['“차가워. 나 이거 안 할래..”',{y:1},[h('차가워. 나 이거 안 할래..'),y('안 돼요. 방송 전에 가라앉혀야 해요.'),n('유진이 의자를 끌어와 내 옆에 앉는다. 아이스팩을 수건으로 한 번 감싸더니 내 눈가에 살며시 대 준다.'),y('이러면 덜 차갑죠?'),m('투정 한 번에 이렇게 가까워질 줄은 몰랐다.')]]],n:'n'},
 n:{b:'ter',t:'11. 베란다',l:[n('스케줄이 모두 끝난 밤, 숙소 베란다. 유진이 문을 닫고 내 앞에 선다. 평소처럼 담담한 얼굴인데 눈이 곧다.'),y('추운데 왜 나와 있어요.'),n('유진이 들고 온 겉옷을 내 어깨 위에 조심스레 둘러 주었다.'),h('고마워.'),n('어깨를 감싼 옷자락 사이로 희미한 온기가 스며들었다. 이상하게도 마음까지 따뜻해지는 기분이었다.'),y('저 이런 거 형한테만 해요.'),n('뜻밖의 말에 아무런 대답도 하지 못했다. 그저 유진의 얼굴만 멍하니 바라보았다.'),y('제가 나중에 다 얘기해 준다고 했던 거, 기억해요?'),n('기억난다. 엉엉 울던 모습을 유진에게 들켜 버린 그날.'),n('부끄러운 기억이 선명하게 떠올라, 말없이 고개만 끄덕였다.'),y('그날, 민준 형한테 고민 상담하러 갔던 거예요.'),n('또다시 민준의 이름이었다. 그 이름을 듣는 순간, 마음 한구석에 작은 정전기가 이는 듯했다.'),y('형을 좋아하는데 어떻게 해야 될지 모르겠어서.'),n('생각지도 못한 말에 고개를 번쩍 들었다. 유진은 잠시 나와 눈을 맞추더니, 이내 시선을 아래로 떨구었다.'),h('…어떤 형?'),n('유진이 당황한 듯 귀끝까지 빨개지더니, 말없이 손가락으로 나를 가리켰다.')],
@@ -178,9 +174,9 @@ function chatLines(){const sl=S[st.id].l.filter(l=>!l[2]||l[2](st.s)),o=[];const
 let chN=0;function renderChat(){const A=chatLines(),L=[],un=[];A.forEach(x=>{if(x[0]==='RD'){un.length=0;return}if(x[0]==='TY')un.length=0;else un.push(L.length);L.push(x)});const c=$('cl'),cur_=()=>[...c.children].filter(e=>!e.classList.contains('tyb'));if(L.length<chN||cur_().length!==chN){c.innerHTML='';chN=0}for(let k=chN;k<L.length;k++){const e=document.createElement('p');e.className=(L[k][0]==='TH'?'H':'Y')+(k===L.length-1&&k>=chN&&chN>0||L.length===1?' new':'');e.textContent=nz(L[k][1]);const tb=c.querySelector('.tyb');tb?c.insertBefore(e,tb):c.append(e)}chN=L.length;cur_().forEach((e,k)=>e.classList.toggle('u',un.includes(k)));c.scrollTop=c.scrollHeight}
 let tyT=[];function stopTyping(){tyT.forEach(clearTimeout);tyT=[];const t=document.querySelector('#cl .tyb');if(t)t.remove()}
 function typing(){stopTyping();const c=$('cl'),b=document.createElement('p');b.className='Y tyb';b.innerHTML='<i></i><i></i><i></i>';const on=()=>{c.append(b);c.scrollTop=c.scrollHeight},off=()=>b.remove();on();tyT.push(setTimeout(off,1500),setTimeout(on,2400))}
-function setCg(k,a){callAudio(k);const c=$('cg'),p=$('ph'),ch=$('chat');if(k==='chat'){c.classList.remove('on');p.classList.remove('on');stopPhone();ch.classList.add('on');renderChat();return}ch.classList.remove('on');$('cl').innerHTML='';chN=0;if(k==='call'||k==='callon'||k==='calloff'||k==='msg'){c.classList.remove('on');p.classList.add('on');phone(k,a||0);return}p.classList.remove('on');p.classList.remove('msg');stopPhone();if(k){c.style.backgroundImage='url(p_'+k+'.jpg)';c.classList.add('on')}else c.classList.remove('on')}
-['dorm','day','prac','alone','night','morn','ter','win','cry'].forEach(k=>{new Image().src='p_'+k+'.jpg'});
-const bgc={};function setBg(k){const b=$('bg'),i=$('bgi');b.className=k;i.style.backgroundImage='';const u='p_'+k+'.jpg';if(bgc[u]===undefined){const im=new Image();im.onload=()=>{bgc[u]=1;if(b.className===k)i.style.backgroundImage='url('+u+')'};im.onerror=()=>{bgc[u]=0};im.src=u}else if(bgc[u])i.style.backgroundImage='url('+u+')'}
+function setCg(k,a){callAudio(k);const c=$('cg'),p=$('ph'),ch=$('chat');if(k==='chat'){c.classList.remove('on');p.classList.remove('on');stopPhone();ch.classList.add('on');renderChat();return}ch.classList.remove('on');$('cl').innerHTML='';chN=0;if(k==='call'||k==='callon'||k==='calloff'||k==='msg'){c.classList.remove('on');p.classList.add('on');phone(k,a||0);return}p.classList.remove('on');p.classList.remove('msg');stopPhone();if(k){c.style.backgroundImage=k==='win'?'url(q_win.jpg)':'url(p_'+k+'.jpg)';c.classList.add('on')}else c.classList.remove('on')}
+['dorm','kitchen','prac','alone','phone','bed','hood','jelly','morn','ter','win'].forEach(k=>{new Image().src='q_'+k+'.jpg'});new Image().src='p_cry.jpg';
+const bgc={};function setBg(k){const b=$('bg'),i=$('bgi');b.className=k;i.style.backgroundImage='';const u='q_'+k+'.jpg';if(bgc[u]===undefined){const im=new Image();im.onload=()=>{bgc[u]=1;if(b.className===k)i.style.backgroundImage='url('+u+')'};im.onerror=()=>{bgc[u]=0};im.src=u}else if(bgc[u])i.style.backgroundImage='url('+u+')'}
 const ls={g:k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},s:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const toast=t=>{const d=document.createElement('div');d.id='toast';d.textContent=t;$('app').appendChild(d);setTimeout(()=>d.remove(),1400)};
 function au_(){if(!ac)try{ac=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}return ac}
