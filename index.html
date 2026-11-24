@@ -66,8 +66,8 @@ body{background:var(--bg);color:var(--fg);font-family:var(--pix);overflow:hidden
 .mb:hover,.mb:focus-visible{background:#ff8fb12b;border-color:var(--pk);outline:0}
 button:focus-visible{outline:3px solid var(--pk)}
 /* title */
-#menu{z-index:6;align-items:center;justify-content:center;text-align:center;background:#0006}
-#menu::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(#14102a33,#14102acc),url(q_win.jpg) center 30%/cover}
+#menu{z-index:6;align-items:center;justify-content:flex-end;text-align:center;background:none;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 9vh)}
+#menu::before{content:"";position:absolute;inset:0;z-index:-1;--ph:calc(min(100vw,480px)*1.334);background:linear-gradient(#14102a8c,#14102a00 12%) top/100% var(--ph) no-repeat,linear-gradient(#14102a00 38%,#14102ab3 66%,#14102a 96%) top/100% var(--ph) no-repeat,radial-gradient(ellipse 80% 60% at 50% 40%,#14102a00 60%,#14102a80 100%) top/100% var(--ph) no-repeat,linear-gradient(#2a1d5a47,#2a1d5a47) top/100% var(--ph) no-repeat,url(q_cover.jpg) top center/100% auto no-repeat;background-color:#14102a}
 #menu>*{position:relative}
 .cv{margin-bottom:28px}
 #menu h1{font-weight:400;font-size:clamp(32px,9.5vw,52px);line-height:1.2;margin-bottom:10px;text-shadow:0 0 24px var(--pk);white-space:nowrap}
@@ -109,56 +109,13 @@ button:focus-visible{outline:3px solid var(--pk)}
 .dj{display:block;width:100%;text-align:left;font-family:var(--pix);background:#ffffff10;color:var(--fg);border:1px solid #fff3;border-radius:10px;padding:9px 12px;margin-bottom:6px;cursor:pointer;line-height:1.5;font-size:14px}
 .dj:hover{border-color:var(--pk)}.dj b{color:var(--pk);margin-right:6px;font-weight:400}.dj small{display:block;color:var(--mist);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #toast{position:absolute;top:60px;left:50%;transform:translateX(-50%);background:var(--pk);color:#2a1030;padding:6px 16px;border-radius:999px;font-size:14px;z-index:50}
-
-/* ===== pop idol theme (cover + game screen only; overlays untouched) ===== */
-:root{--sky:#5fe2f9;--sky2:#43d3f5;--dk:#1a6fe0;--hp:#ff5fa8;--hp2:#e23d88;--yl:#ffe45c}
-.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-#app,#bg{background:radial-gradient(circle at 18% 22%,#fff 0 1.5px,#0000 2.5px) 0 0/46px 46px,radial-gradient(circle at 70% 64%,#ffffffcc 0 1.2px,#0000 2.2px) 0 0/58px 58px,repeating-linear-gradient(135deg,var(--sky) 0 26px,var(--sky2) 26px 52px)}
-#bg::after{background:linear-gradient(#43d3f555 0,#43d3f500 14%,#43d3f500 55%,#43d3f5aa 76%,#43d3f5 100%)}
-/* cover */
-#menu{background:none;justify-content:center;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 8vh)}
-#menu::before{background:radial-gradient(circle at 50% 30%,#ffffffaa,#fff0 60%),radial-gradient(circle at 20% 15%,#fff 0 2px,#0000 3px) 0 0/40px 40px,repeating-linear-gradient(135deg,var(--sky) 0 26px,var(--sky2) 26px 52px)}
-#menu::after{content:"";position:absolute;left:0;right:0;top:0;height:16px;background:radial-gradient(circle,#fff 0 4px,#0000 5px) 0 0/22px 16px,linear-gradient(#a9f2ff,#7fe8fb);z-index:0}
-.cv{position:relative;width:100%;margin:10px 0 18px}
-#cvi{display:block;width:100%;height:auto;-webkit-mask-image:radial-gradient(ellipse 66% 72% at 50% 48%,#000 72%,#0000 100%);mask-image:radial-gradient(ellipse 66% 72% at 50% 48%,#000 72%,#0000 100%);animation:fl 3.2s ease-in-out infinite}
-@keyframes fl{50%{transform:translateY(-6px)}}
-#menu #bn{position:absolute;left:32.5%;width:36.2%;top:84.6%;height:13.6%;margin:0;padding:0;background:none;border:0;border-radius:999px;color:#0000;font-size:0;animation:fl 3.2s ease-in-out infinite}
-#menu #bn:hover,#menu #bn:focus-visible{background:#ffffff33;outline:3px solid #fff}
-#menu .mb{font-weight:700;color:#fff;background:linear-gradient(#ff8cc4,var(--hp));border:3px solid #fff;border-radius:999px;box-shadow:0 5px 0 var(--hp2),0 8px 16px #1a6fe044;text-shadow:0 1px 0 var(--hp2);margin:10px auto}
-#menu .mb:hover,#menu .mb:focus-visible{background:linear-gradient(#ffa6d2,#ff74b5);outline:0;transform:translateY(1px)}
-#menu .cv-n{color:#fff;opacity:1;font-weight:700;text-shadow:0 1px 0 var(--dk),0 0 8px #1a6fe088}
-#menu .devb{color:var(--dk);background:#ffffffcc;border:2px dashed var(--dk)}
-/* top bar */
-#bar button{color:var(--dk);background:#fffffff0;border:2px solid var(--dk);font-weight:700}
-#bar button.on{background:var(--hp);color:#fff;border-color:#fff;box-shadow:0 0 0 2px var(--hp2)}
-/* name tag */
-#nm{background:var(--hp);color:#fff;border:3px solid #fff;font-weight:700;padding:3px 16px;box-shadow:0 3px 0 var(--hp2),0 4px 10px #1a6fe044;margin-bottom:-12px}
-#nm.nY{background:#3d9bff;color:#fff;box-shadow:0 3px 0 var(--dk),0 4px 10px #1a6fe044}
-#nm.nM{background:#ffc7df;color:var(--hp2);box-shadow:0 3px 0 #f19bc2,0 4px 10px #1a6fe044}
-#nm.nG{background:#8fdc5a;color:#fff;box-shadow:0 3px 0 #5aa832,0 4px 10px #1a6fe044}
-/* dialog */
-#box{background:#fff;border:4px solid var(--dk);border-radius:22px;box-shadow:inset 0 0 0 3px #bdf1ff,0 6px 0 #0f4fb0,0 12px 24px #1a6fe055;padding-top:22px}
-#box.mono{color:#d63a80}
-#box small{color:var(--hp)}
-#tap{color:#fff;font-weight:700;text-shadow:0 1px 0 var(--dk)}
-/* choices */
-#ch button{color:#2a2140;background:#fff;border:3px solid var(--hp);border-left-width:3px;border-radius:26px;padding:13px 22px;font-weight:700;box-shadow:0 5px 0 var(--hp2),0 9px 18px #1a6fe044;transform:none}
-#ch button::before{content:"♥";color:var(--hp);margin-right:8px}
-#ch button:hover,#ch button:focus-visible{background:#fff8cf;transform:translateY(2px);box-shadow:0 3px 0 var(--hp2),0 6px 12px #1a6fe044}
-/* chat */
-#chat{background:#ffffffee;border:4px solid var(--dk);border-radius:22px;box-shadow:0 6px 0 #0f4fb0,0 12px 24px #1a6fe055;color:#2a2140}
-#chat header{color:var(--dk);font-weight:700;border-bottom:2px dashed #9fdcff}
-#cl .H{background:var(--hp);color:#fff}
-#cl .Y{background:#e6f6ff;color:#2a2140;border:2px solid #9fdcff}
-#cl .H.u::before{color:#ff9a1f;font-weight:700}
-#cl .tyb i{background:#7cc3ff}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
 
 </head><body><div id="app">
 <div id="bg" class="dorm"><i id="bgi"></i><i id="cg"></i><div id="ph"><div id="phi"><span id="phc">AM 01:08</span><b id="phn">유진</b><span id="phs">전화 거는 중…</span><span id="phd"><i></i><i></i><i></i></span><span id="pht"></span><div id="pbt"><span><i>🔈</i>스피커</span><span><i>⌗</i>키패드</span><span><i>🎙</i>음소거</span></div><span id="phe"><i></i></span><span id="phx"></span><span id="phy"></span><span id="pmt">AM 01:13</span></div></div><div id="chat"><header><b>유진</b></header><div id="cl"></div></div></div><div id="fd"></div>
-<div id="menu" class="scr"><div class="cv"><h1 class="sr">사랑한다고 해 줘</h1><img id="cvi" src="cover.png" alt=""><button class="mb" id="bn" aria-label="처음부터">처음부터</button><i class="cv-d"></i><p class="cv-s sr">가장 가까운 사람이 멀게 느껴질 때</p><b id="cvc" hidden></b></div><div class="mw"><button class="mb" id="bc">이어서 하기</button><button class="mb" id="bg2">엔딩 갤러리</button><button id="devj" class="devb">장면 바로가기 (수정용)</button></div><p class="cv-n">한유진 · 장하오</p></div>
+<div id="menu" class="scr"><div class="cv"><h1>사랑한다고 해 줘</h1><i class="cv-d"></i><p class="cv-s">가장 가까운 사람이 멀게 느껴질 때</p><b id="cvc" hidden></b></div><div class="mw"><button class="mb" id="bn">처음부터</button><button class="mb" id="bc">이어서 하기</button><button class="mb" id="bg2">엔딩 갤러리</button><button id="devj" class="devb">장면 바로가기 (수정용)</button></div><p class="cv-n">한유진 · 장하오</p></div>
 <div id="game" class="scr hide"><div id="bar"><button id="bk" aria-label="뒤로">←</button><button id="b1">로그</button><button id="b2">저장</button><button id="b3">자동</button><button id="b4">스킵</button><button id="b5" class="on">BGM</button><button id="b6" class="on">효과음</button><button id="b8">장면</button><button id="b7">메뉴</button></div>
 <div id="ch" class="hide"></div><div id="nm"></div><div id="box"></div><div id="tap">화면을 눌러 계속</div></div>
 <div id="ov" class="scr hide"></div>
@@ -193,11 +150,11 @@ i:{b:'jelly',t:'8. 참았던 밤',l:[n('현관 비밀번호 소리. 예정보다
 c:[['“형이 왜 미안해요.” 유진이 속상한 얼굴로 묻는다',{},[y('형이 왜 미안해요.'),n('유진이 침대 앞에 무릎을 꿇고 앉아 내 얼굴을 올려다본다.'),y('그렇게 끊어 버리면 제가 어떻게 잊어요.'),m('나도 모르게 내뱉은 말이었는데, 그 말을 붙잡고 여기까지 달려올 줄은 몰랐다.')]],['유진이 말없이 눈물을 닦아 준다',{},[n('유진이 말없이 손을 뻗어 내 눈가의 눈물을 닦아 준다.'),n('손끝이 차갑다. 밖에서부터 뛰어온 사람의 손이다.'),m('밀어내야 하는데, 나도 모르게 그 손에 얼굴을 기대고 만다.'),y('…울지 마요, 형.')]],['“왜 벌써 왔어..?” 하오가 눈물을 감추며 묻는다',{p:2},[h('왜 벌써 왔어..?'),h('아니야… 그냥 나 안아 줘..'),n('유진이 대답 대신 봉지를 내려놓고 나를 끌어안는다.'),n('맞닿은 가슴 너머로 유진의 심장 소리가 들린다. 쿵, 쿵, 쿵. 숨이 찰 만큼 빠르다.'),m('…여기까지 뛰어왔구나. 나 때문에.'),y('제가 미안해요.')]]],n:'k'},
 k:{b:'bed',t:'9. 말하지 못한 것',l:[y('저는 자꾸 형만 신경 쓰여서… 혹시 형이 그걸 부담스러워할까 봐, 그게 무서웠어요.'),m('나만 불안한 줄 알았다. 유진이도 나만큼, 어쩌면 나보다 더 흔들리고 있었다. 이번엔 나도 말해야 한다.'),h('부담 안 가져. 나는… 유진이가 나를 더 신경 써 줬으면 좋겠어.'),m('사실 알고 있었다. 유진이는 늘 나를 지켜보고, 내가 조금만 달라져도 먼저 알아채고 안아 주던 애라는 걸.'),y('형이 조금이라도 달라지면 누구보다 제가 먼저 알아요.')],add:{o:2},n:'l'},
 l:{b:'morn',t:'10. 달라진 거리',l:[n('다음 날 아침. 눈이 퉁퉁 부어 있다. 식탁에 유진이 있다. 내 자리 앞에 따뜻한 물과 아이스팩이 놓여 있다.'),y('눈 부었어요. 이거 대고 있어요. 스케줄 오후부터니까 더 자도 돼요.'),n('유진의 핸드폰이 울린다. 화면에 민준 이름이 뜬다. 유진은 핸드폰을 뒤집어 놓는다.'),y('김민준 형 연락이에요. 지금은 안 받을래요.'),m('안 받는다. 나 때문에.')],
-c:[['“받아도 돼. 나 괜찮아.”',{h:1},[y('…괜찮다는 사람 표정이 왜 그래요.'),n('유진이 휴대전화의 알림을 끄고 뒤집어 놓는다. 그러고는 방해받고 싶지 않다는 듯 온전히 내게 시선을 돌린다.'),y('급한 거 아니에요. 지금은 형이 먼저예요.'),m('괜찮다는 말이 또 먼저 나왔다. 하나도 안 괜찮으면서. 그걸 유진이는 또 알아챘다.')]],['“…이거 네 손으로 해 줘.”',{o:1,y:2},[n('아이스팩을 내밀자 유진이 잠깐 나를 본다. 그러다 핸드폰을 내려놓고 아이스팩을 받아 든다.'),y('이리 와요. 눈 감고 있어요.'),m('차가운 아이스팩이 눈가에 닿는다. 그걸 대 주는 유진의 손이 이상하게 따뜻하다.')]],['“차가워. 나 이거 안 할래..”',{y:1},[h('차가워. 나 이거 안 할래..'),y('안 돼요. 방송 전에 가라앉혀야 해요.'),n('유진이 의자를 끌어와 내 옆에 앉는다. 아이스팩을 수건으로 한 번 감싸더니 내 눈가에 살며시 대 준다.'),y('이러면 덜 차갑죠?'),m('투정 한 번에 이렇게 가까워질 줄은 몰랐다.')]]],n:'n'},
+c:[['“지금은 내가 더 중요한 거야?”',{h:1},[h('지금은 내가 더 중요한 거야?'),y('지금만 그런 거 아닌데요.'),n('유치하지만 한 번 더 확인하고 싶어졌다.'),h('앞으로 나랑 다른 사람 중에 골라야 한다면?'),y('제 선택은 항상 형이죠.'),n('조금의 망설임도 없는 대답이었다.'),n('유진은 내 손에 들린 아이스팩을 가져가 부어오른 눈 위에 조심스레 얹어 주었다.'),n('차가운 감촉 너머로 유진의 다정함이 고스란히 전해졌다.')]],['“유진이가 해 줘.”',{o:1,y:2},[n('아이스팩을 내밀자 유진이 잠깐 나를 본다. 그러다 핸드폰을 내려놓고 아이스팩을 받아 든다.'),y('이리 와요. 눈 감고 있어요.'),m('차가운 아이스팩이 눈가에 닿는다. 그걸 대 주는 유진의 손이 이상하게 따뜻하다.')]],['“차가워. 나 이거 안 할래..”',{y:1},[h('차가워. 나 이거 안 할래..'),y('안 돼요. 방송 전에 가라앉혀야 해요.'),n('유진이 의자를 끌어와 내 옆에 앉는다. 아이스팩을 수건으로 한 번 감싸더니 내 눈가에 살며시 대 준다.'),y('이러면 덜 차갑죠?'),m('투정 한 번에 이렇게 가까워질 줄은 몰랐다.')]]],n:'n'},
 n:{b:'ter',t:'11. 베란다',l:[n('스케줄이 모두 끝난 밤, 숙소 베란다. 유진이 문을 닫고 내 앞에 선다. 평소처럼 담담한 얼굴인데 눈이 곧다.'),y('추운데 왜 나와 있어요.'),n('유진이 들고 온 겉옷을 내 어깨 위에 조심스레 둘러 주었다.'),h('고마워.'),n('어깨를 감싼 옷자락 사이로 희미한 온기가 스며들었다. 이상하게도 마음까지 따뜻해지는 기분이었다.'),y('저 이런 거 형한테만 해요.'),n('뜻밖의 말에 아무런 대답도 하지 못했다. 그저 유진의 얼굴만 멍하니 바라보았다.'),y('제가 나중에 다 얘기해 준다고 했던 거, 기억해요?'),n('기억난다. 엉엉 울던 모습을 유진에게 들켜 버린 그날.'),n('부끄러운 기억이 선명하게 떠올라, 말없이 고개만 끄덕였다.'),y('그날, 민준 형한테 고민 상담하러 갔던 거예요.'),n('또다시 민준의 이름이었다. 그 이름을 듣는 순간, 마음 한구석에 작은 정전기가 이는 듯했다.'),y('형을 좋아하는데 어떻게 해야 될지 모르겠어서.'),n('생각지도 못한 말에 고개를 번쩍 들었다. 유진은 잠시 나와 눈을 맞추더니, 이내 시선을 아래로 떨구었다.'),h('…어떤 형?'),n('유진이 당황한 듯 귀끝까지 빨개지더니, 말없이 손가락으로 나를 가리켰다.')],
 c:[['“…유진아, 너 나 좋아해?”',{o:2},[h('…유진아, 너 나 좋아해?'),n('유진이 눈을 피하지 않고 고개를 끄덕인다.'),y('네. 좋아해요, 형.'),m('…나만 그런 게 아니었구나.')]],['“나도 유진이 좋아하지…”',{o:1},[h('나도 유진이 좋아하지…'),n('유진이 한 걸음 다가와 내 어깨를 잡으며 말했다.'),y('형이 나한테만 잘해 줬으면 좋겠고, 나한테만 웃어 줬으면 좋겠고, 형이 제일 먼저 찾는 사람도 나였으면 좋겠어요.'),n('뭐라고 말해야 할지 몰라 아무 말도 하지 못했다.')]],['대답을 못 하고 시선을 피한다',{h:1},[y('도망가도 되는데, 오늘은 그냥 듣고 있어요.'),n('유진의 목소리가 낮다. 도망칠 곳은 사실 없다.')]]],n:'o'},
 o:{b:'ter',t:'12. 마음',l:[y('나 말고 다른 사람이랑 더 친해지는 것도 싫고, 형이 다른 사람한테 나한테 하듯이 다정하게 구는 것도 싫어요.'),n('당황스러운 마음을 추스를 새도 없이 유진의 말이 이어졌다.'),y('그냥 형이 나만 봤으면 좋겠어요. 나만 생각하고, 나만 보고 싶어 하고, 힘들 때도 나한테만 기대고……'),n('한마디도 보태지 못한 채 그저 유진을 바라보았다. 귓가에 열이 오르는 것이 느껴졌다.'),y('……형도 그래요?'),n('쉴 새 없이 이어지던 고백이 멎었다. 대답을 기다리는 유진의 눈빛에는 간절함이 가득 담겨 있었다.')],
-c:[['“사랑한다고 해 줘.”',{o:2},[h('사랑한다고 해 줘.'),vo(y('사랑해.'),'v_h.mp3'),vo(y('형도 사랑한다고 말해 주세요.'),'v_i.mp3'),vo(h('나도 자주 할게.'),'v_j.mp3'),vo(h('사랑해.'),'v_k.mp3')],'R'],['“…좋은 동생이야, 유진아.” 말을 삼킨다',{h:3},[n('유진이 손을 천천히 놓는다. 따뜻함이 바람에 날아간다.')],'eN'],['“아직은 이름 붙이지 말고, 천천히 가 보자.”',{y:1},[y('천천히요?'),h('응. 너랑 같이라면 천천히도 좋아.'),n('유진이 한참 나를 보다 고개를 끄덕인다.')],'eG']]},
+c:[['“나도 유진이랑 같은 마음인 것 같아.”',{o:2},[h('나도 유진이랑 같은 마음인 것 같아.'),n('괜한 부끄러움에 애써 감춰 왔던 마음을 조심스레 내어 보였다. 입 밖으로 꺼내고 나니, 그동안 마음 한편에 쌓여 있던 서운함마저 사르르 녹아내리는 듯했다.'),vo(y('사랑한다고 말해 줘요.'),'v_l.mp3'),n('사랑을 갈구하는 욕심스러운 말에 조금 놀라 유진을 바라보았다. 가슴 한편이 뜨거워지는 듯했다. 그토록 간절하게 내 사랑을 바라는 모습이 어쩐지 애틋하고 사랑스러웠다.'),vo(y('사랑해라고 해 줘.'),'v_m.mp3'),n('마치 어린아이처럼 떼를 쓰듯, 반말로 다시 한번 사랑을 요구했다.'),vo(h('사랑해.'),'v_n.mp3'),n('사랑을 보채는 유진을 바라보며 다정하게 말했다. 그 짧은 한마디에 담긴 마음만큼은 조금도 가볍지 않았다.')],'R'],['“…좋은 동생이야, 유진아.” 말을 삼킨다',{h:3},[n('유진이 손을 천천히 놓는다. 따뜻함이 바람에 날아간다.')],'eN'],['“아직은 이름 붙이지 말고, 천천히 가 보자.”',{y:1},[y('천천히요?'),h('응. 너랑 같이라면 천천히도 좋아.'),n('유진이 한참 나를 보다 고개를 끄덕인다.')],'eG']]},
 R:{b:'ter',l:[],n:s=>s.p>=2?'eS':'eT'},
 eT:{b:'morn',t:'TRUE END',l:[],e:'T'},
 eS:{b:'ter',t:'SPECIAL END',l:[y('형이 다른 사람 옆에 있는 게 싫다고 했죠. 사실은 그보다 더해요. 형이 웃는 얼굴은 저만 봤으면 좋겠어요. 이상한 말이죠.'),h('안 이상해. 나도 네가 민준이랑 웃을 때 그랬어.'),n('유진이 처음으로 어린 얼굴로 웃는다. 맞잡은 손이 조금 더 단단해진다.'),y('그럼 형 연락은 이제 제가 제일 먼저 받는 거예요. 약속해요.'),h('약속. 대신 너도 서운하면 말해.'),n('며칠 뒤 복도. 민준이 내게 속삭인다.'),g('선배님, 저 눈치 늦게 챘는데요. 유진이가 저한테 시선 쏘길래 그냥 도망쳤어요. 두 분 잘되셨으면 해요.'),m('유진이 내 뒤에서 헛기침을 한다. 귀가 빨갛다. 독점욕은 이렇게 귀여운 모양이기도 하다.')],e:'S'},
@@ -225,18 +182,19 @@ const ls={g:k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return n
 const toast=t=>{const d=document.createElement('div');d.id='toast';d.textContent=t;$('app').appendChild(d);setTimeout(()=>d.remove(),1400)};
 function au_(){if(!ac)try{ac=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}return ac}
 function tone(f,d,v){const a=au_();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type='square';o.frequency.value=f;g.gain.setValueAtTime(v,a.currentTime);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+d);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d)}
-let vc=null,vd=0;const VO={};['a','b','c','d','e','f','g','h','i','j','k'].forEach(k=>{const a=new Audio('v_'+k+'.mp3');a.preload='auto';VO['v_'+k+'.mp3']=a});
+let vc=null,vd=0;const VO={};['a','b','c','d','e','f','g','l','m','n'].forEach(k=>{const a=new Audio('v_'+k+'.mp3');a.preload='auto';VO['v_'+k+'.mp3']=a});
 let vT=0,dk=0;let onCall=0;const ring=new Audio('ring.mp3');ring.loop=true;ring.volume=.9;ring.preload='auto';
 function duck(to){if(onCall)to=0;clearInterval(dk);dk=setInterval(()=>{const v=bgm.volume,d=to-v;if(Math.abs(d)<.02){bgm.volume=to;clearInterval(dk);if(to===0&&onCall)bgm.pause()}else bgm.volume=v+d*.25},40)}
 function callAudio(k){const c=k==='call'||k==='callon'||k==='calloff'||k==='msg';if(c&&!onCall){onCall=1;duck(0)}else if(!c&&onCall){onCall=0;if(mb){bgm.volume=0;playBgm();duck(.45)}}if(k==='call'&&sf&&!sk){if(ring.paused){ring.currentTime=0;const p=ring.play();if(p&&p.catch)p.catch(()=>{})}}else if(!ring.paused)ring.pause()}
 function stopVo(){clearTimeout(vT);if(vc){vc.pause();vc.onended=null;vc=null}duck(.45)}
 function playVo(f){stopVo();if(!sf||sk||!VO[f])return;vc=VO[f];vc.currentTime=0;vc.volume=.85;duck(.16);const a=vc;vT=setTimeout(()=>{a.onended=()=>{duck(.45);vc=null;if(au&&!ty)tm=setTimeout(show,900)};const p=a.play();if(p&&p.catch)p.catch(()=>{duck(.45);vc=null})},450)}
 const bgm=new Audio('bgm.mp3');bgm.loop=true;bgm.volume=.45;bgm.preload='auto';
-function playBgm(){if(onCall){bgm.pause();return}if(mb){const p=bgm.play();if(p&&p.catch)p.catch(()=>{})}else bgm.pause()}
+const B2=new Set(['l','n','o','R','eT','eS','eG','eN']);const trkW=()=>st&&B2.has(st.id)?'bgm2.mp3':'bgm.mp3';function trk(){const w=trkW();if(!bgm.src.endsWith(w)){bgm.src=w;bgm.currentTime=0}}
+function playBgm(){trk();if(onCall){bgm.pause();return}if(mb){const p=bgm.play();if(p&&p.catch)p.catch(()=>{})}else bgm.pause()}
 function newGame(pn){hist=[];st={pn:pn||'민준',id:'a',i:0,s:{y:0,h:0,o:0,p:0},q:null,nx:null,lg:[],last:null};ui();go('a')}
 function ui(){['menu','ov'].forEach(i=>$(i).classList.add('hide'));$('game').classList.remove('hide');$('ch').classList.add('hide');$('box').classList.remove('hide');$('nm').classList.remove('hide')}
 let lastT='',chT;function chap(t){return;lastT=t;const m=t.match(/^(\d+)\.\s*(.*)$/),c=$('chap');c.querySelector('i').textContent=m?'CHAPTER '+m[1]:'';c.querySelector('span').textContent=m?m[2]:t;c.classList.add('show');clearTimeout(chT);chT=setTimeout(()=>c.classList.remove('show'),1900)}
-function go(id){clearTimeout(tm);busy=1;$('ch').classList.add('hide');$('box').classList.remove('hide');$('nm').classList.remove('hide');if(S[id].add){st.ad=st.ad||{};if(!st.ad[id]){st.ad[id]=1;for(const k in S[id].add)st.s[k]+=S[id].add[k]}}st.id=id;st.i=0;st.q=null;st.nx=null;const sc=S[id];$('fd').style.opacity=1;setTimeout(()=>{setBg(sc.b);chap(sc.t);$('fd').style.opacity=0;busy=0;show()},300)}
+function go(id){clearTimeout(tm);busy=1;$('ch').classList.add('hide');$('box').classList.remove('hide');$('nm').classList.remove('hide');if(S[id].add){st.ad=st.ad||{};if(!st.ad[id]){st.ad[id]=1;for(const k in S[id].add)st.s[k]+=S[id].add[k]}}if(!bgm.src.endsWith(id&&B2.has(id)?'bgm2.mp3':'bgm.mp3')&&!bgm.paused){duck(0);setTimeout(()=>{bgm.volume=0;playBgm();duck(.45)},700)}st.id=id;st.i=0;st.q=null;st.nx=null;const sc=S[id];$('fd').style.opacity=1;setTimeout(()=>{setBg(sc.b);chap(sc.t);$('fd').style.opacity=0;busy=0;show()},300)}
 const cur=()=>st.q||S[st.id].l.filter(l=>!l[2]||l[2](st.s));
 function show(){clearTimeout(tm);clearInterval(ty);ty=0;if(busy)return;const L=cur();while(st.i<L.length&&(L[st.i][0]==='CG'||L[st.i][0]==='RD'))st.i++;if(st.i<L.length){setCg(...cgNow());hist.push(JSON.stringify({id:st.id,i:st.i,s:st.s,q:st.q,nx:st.nx,n:st.lg.length}));if(hist.length>80)hist.shift();draw(L[st.i++]);st.hs=hist.slice(-40);ls.s('hj2_s',st)}else after()}
 function fin(){clearInterval(ty);ty=0;const tx=$('box').classList.contains('tin')?null:$('tx');if(tx)tx.textContent=full;$('box').classList.add('done');if(sk)tm=setTimeout(show,60);else if(au&&!vc)tm=setTimeout(show,1200+full.length*40)}
