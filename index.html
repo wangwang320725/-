@@ -88,7 +88,7 @@ button:focus-visible{outline:3px solid var(--pk)}
 #nm.nG{background:#b6e88f;color:#1c2e10}
 #box{position:relative;min-height:158px;max-height:230px;overflow-y:auto;padding:20px 18px 30px;font-size:17px;line-height:1.8;word-break:keep-all;cursor:pointer;color:#2a2140;background:#fbf8ffee;border:1px solid #fff;border-radius:14px;scrollbar-width:none;box-shadow:0 8px 28px #0007}
 #box::-webkit-scrollbar{display:none}
-#box.mono{color:#a8476b;background:linear-gradient(160deg,#fff 0%,#ffe6f0 55%,#ffd3e6 100%)}
+#box.mono{color:#fff0f6;background:linear-gradient(160deg,#4a3a75f0 0%,#6a4588f0 60%,#8d4c90f0 100%);border:1px solid #ffb3d166;box-shadow:0 0 24px #ff8fb166,0 8px 28px #0008}
 #box.nar{color:#3a3150}
 #box small{position:absolute;right:12px;bottom:6px;color:#7a6c96;opacity:.8;font-size:12px;visibility:hidden}
 #box small::after{content:"▼"}
@@ -124,7 +124,7 @@ button:focus-visible{outline:3px solid var(--pk)}
 const n=t=>['N',t],m=t=>['M',t],h=t=>['H',t],y=t=>['Y',t],g=t=>['G',t];
 const vo=(l,f)=>(l[2]=0,l[3]=f,l);
 const tH=t=>['TH',t],tY=t=>['TY',t],tw=l=>(l[2]=0,l[4]='typing',l);
-const NM={M:'하오 (속마음)',H:'하오',Y:'한유진',G:'김민준',TH:'하오 (메시지)',TY:'한유진 (메시지)'};
+const NM={M:'장하오 (속마음)',H:'장하오',Y:'한유진',G:'김민준',TH:'장하오 (메시지)',TY:'한유진 (메시지)'};
 const S={
 a:{b:'dorm',t:'1. 숙소의 밤',l:[n('새벽 한 시가 가까운 숙소 거실. 연습을 마친 우리는 소파에 늘어져 있다. 나는 유진이 손에 든 과자 봉지만 노려본다.'),h('유진아, 한 입만. 아~'),n('입을 벌린 채 눈만 동그랗게 뜨고 올려다본다. 과자를 집던 유진의 손이 멈춘다.'),y('형, 그렇게 귀엽게 쳐다봐도 안 돼요.'),n('유진이 작게 한숨을 쉰다. 먹고 있던 과자를 다정하게 집어 내 입에 넣어 준다. 손끝이 입술 가장자리를 스치고 지나간다.'),y('…말티즈처럼 먹네.'),n('작게 중얼거리고는 유진이 입꼬리를 슬쩍 올린다. 놀리는 말인데 목소리가 이상하게 다정하다.'),h('말티즈? 나 지금 강아지 취급당한 거야?'),y('그래도 깨무는 건 안 돼요.'),n('말끝에 유진이 장난스럽게 웃는다. 그 얼굴을 보고 있자니 나도 모르게 따라 웃게 된다.'),m('이런 사소한 게 좋아서 매일 모른 척 장난을 친다. 좋아한다는 말은 장난에도 못 섞으면서.')],
 c:[['유진의 어깨에 기댄다',{y:1},[y('…무거워요, 형.'),n('그러면서도 내가 편하도록 어깨를 살짝 낮춰 준다. 귀끝이 조금 빨갛다.')]],['“하나 더~” 다시 아~ 하고 입을 벌린다',{y:1},[y('…하나만이에요. 진짜로.'),n('그러면서 또 하나를 집어 내 입에 넣어 준다. 입을 다문 채 우물거리는 나를 보고 유진이 작게 웃는다.'),h('유진이가 주니까 더 맛있다~'),n('유진은 대꾸 없이 새 봉지를 뜯어 내 앞에 놓는다. 투덜대는 말과 행동이 반대다.')]],['“고생했어, 우리 유진이” 머리를 쓰다듬는다',{y:1,o:1},[y('…갑자기 왜 그래요.'),n('피하지는 않는다. 손바닥 밑에서 유진이가 눈을 한 번 감았다 뜬다.'),m('좋아한다는 말 대신 오늘도 이것만 했다.')]]],n:'b'},
@@ -163,7 +163,7 @@ eN:{b:'ter',t:'NORMAL END',l:[],e:'N'}
 };
 const E={T:['TRUE END','서로의 이름을 부르는 방','마음을 확인하고 연인이 된 두 사람.'],S:['SPECIAL END','귀여운 독점욕','유진의 숨겨진 질투가 드러난 특별한 결말.'],G:['GOOD END','한 뼘 가까이','천천히 가까워지는 두 사람.'],N:['NORMAL END','여전히 같은 그룹 멤버','마음을 표현하지 못한 채 남은 거리.']};
 const $=i=>document.getElementById(i);
-function nz(t){if(typeof t!=='string')return t;const n=(st&&st.pn)||'민준',c=n.charCodeAt(n.length-1),b=c>=0xAC00&&c<=0xD7A3?(c-0xAC00)%28!==0:false,J={'이랑':'랑','이':'가','은':'는','을':'를','과':'와','아':'야'};t=t.replace(/민준이 형/g,()=>n+(b?'이':'')+' 형');return t.replace(/(김)?민준(이랑|이|은|을|과|아)?/g,(m,k,p)=>{const w=(k&&n==='민준')?'김민준':n;return !p?w:b?w+p:w+J[p]})}
+function nz(t){if(typeof t!=='string')return t;const n=(st&&st.pn)||'민준',c=n.charCodeAt(n.length-1),b=c>=0xAC00&&c<=0xD7A3?(c-0xAC00)%28!==0:false,J={'이다':'다','이랑':'랑','이':'가','은':'는','을':'를','과':'와','아':'야'};t=t.replace(/민준이 형/g,()=>n+(b?'이':'')+' 형');return t.replace(/(김)?민준(이다|이랑|이|은|을|과|아)?/g,(m,k,p)=>{const w=(k&&n==='민준')?'김민준':n;return !p?w:b?w+p:w+J[p]})}
 let st,au=0,sk=0,tm,mb=1,sf=1,ac,busy=0,hist=[],ty=0,full='';
 function cgNow(){const sl=S[st.id].l.filter(l=>!l[2]||l[2](st.s));let c='',a=0;const sc=(L,e)=>{for(let k=0;k<e&&k<L.length;k++){if(L[k][0]==='CG'){c=L[k][1];a=0}else a++}};if(st.q){sc(sl,sl.length);sc(st.q,st.i)}else sc(sl,st.i);return[c,a]}
 let phS='',phB=0,phT=0,phL=28;
@@ -203,7 +203,7 @@ function after(){const sc=S[st.id];if(st.q){st.q=null;return nxt()}if(sc.c)retur
 function nxt(){const sc=S[st.id];if(sc.e)return ending(sc.e);let x=st.nx||sc.n;if(typeof x==='function')x=x(st.s);go(x)}
 function choices(sc){stopVo();$('tap').classList.remove('on');au=0;sk=0;$('b3').classList.remove('on');$('b4').classList.remove('on');const c=$('ch');c.innerHTML='';sc.c.forEach(o=>{const b=document.createElement('button');const sp=o[0].split('|');if(sp.length>1){const t=document.createElement('span');t.className='who '+(sp[0]==='유진'?'wY':'wH');t.textContent=sp[0];b.append(t,document.createTextNode(nz(sp[1])))}else b.textContent=nz(o[0]);b.onclick=()=>{for(const k in o[1])st.s[k]+=o[1][k];st.lg.push(['H','▶ '+o[0].replace('|',' · ')]);st.q=o[2];st.i=0;st.nx=o[3]||sc.n;c.classList.add('hide');$('box').classList.remove('hide');$('nm').classList.remove('hide');if(sf)tone(700,.1,.05);show()};c.append(b)});$('box').classList.add('hide');$('nm').classList.add('hide');c.classList.remove('hide')}
 function ending(k){stopVo();setCg('');au=sk=0;const gg=ls.g('hj2_g')||[];if(!gg.includes(k)){gg.push(k);ls.s('hj2_g',gg)}const o=$('ov');o.classList.remove('hide');o.style.justifyContent='center';o.style.textAlign='center';o.innerHTML='<small style="color:var(--pk)">'+E[k][0]+'</small><h2>'+E[k][1]+'</h2><p>'+E[k][2]+'</p>';btn(o,'엔딩 갤러리',gal);btn(o,'처음부터',()=>askName());btn(o,'타이틀로',title)}
-function askName(){au_();playBgm();const o=$('ov');o.classList.remove('hide');o.style.justifyContent='center';o.style.textAlign='center';o.innerHTML='<h2>그 사람의 이름은?</h2><p>하오와 유진 사이에 나타나는 사람이에요.<br>마음대로 지어도 돼요. (최대 5글자)</p>';const i=document.createElement('input');i.id='pn';i.maxLength=5;i.placeholder='예) 김민준';i.autocomplete='off';o.append(i);const go1=()=>newGame(i.value.replace(/[<>&"'`\\\s]/g,'').slice(0,5)||'민준');btn(o,'시작하기',go1);btn(o,'취소',title);i.onkeydown=e=>{if(e.key==='Enter')go1()};setTimeout(()=>i.focus(),50)}
+function askName(){au_();playBgm();const o=$('ov');o.classList.remove('hide');o.style.justifyContent='center';o.style.textAlign='center';o.innerHTML='<h2>그 사람의 이름은?</h2><p>유진과 하오 사이에 나타나는 사람이에요.<br>마음대로 지어도 돼요. (최대 5글자)</p>';const i=document.createElement('input');i.id='pn';i.maxLength=5;i.placeholder='예) 김민준';i.autocomplete='off';o.append(i);const go1=()=>newGame(i.value.replace(/[<>&"'`\\\s]/g,'').slice(0,5)||'민준');btn(o,'시작하기',go1);btn(o,'취소',title);i.onkeydown=e=>{if(e.key==='Enter')go1()};setTimeout(()=>i.focus(),50)}
 function btn(p,t,f){const b=document.createElement('button');b.className='mb';b.textContent=t;b.onclick=f;p.append(b)}
 function title(){stopVo();setCg('');$('game').classList.add('hide');$('ov').classList.add('hide');$('menu').classList.remove('hide');au=sk=0;clearTimeout(tm);clearInterval(ty);ty=0}
 function gal(){const o=$('ov');o.classList.remove('hide');o.style.justifyContent='flex-start';o.style.textAlign='left';const gg=ls.g('hj2_g')||[];o.innerHTML='<h2>엔딩 갤러리 ('+gg.length+'/'+Object.keys(E).length+')</h2>';Object.keys(E).forEach(k=>{const d=document.createElement('div');d.className='gl';d.innerHTML=gg.includes(k)?'<small>'+E[k][0]+'</small><br><b>'+E[k][1]+'</b><br>'+E[k][2]:'<small>???</small><br>아직 보지 못한 엔딩';o.append(d)});btn(o,'닫기',()=>{o.classList.add('hide');if($('game').classList.contains('hide'))$('menu').classList.remove('hide')})}
